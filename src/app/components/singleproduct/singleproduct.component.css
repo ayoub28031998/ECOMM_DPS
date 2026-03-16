@@ -1,0 +1,471 @@
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.rating span {
+  font-size: 30px;
+  cursor: pointer;
+  color: gray;
+}
+
+.rating .selected {
+  color: gold;
+}
+
+textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  height: 100px;
+}
+.rating-with-note {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacement entre les étoiles et la note */
+}
+
+.stars {
+  display: inline-flex;
+}
+
+.stars span {
+  font-size: 20px; /* Taille des étoiles */
+  color: gray; /* Couleur des étoiles non remplies */
+}
+
+.stars span.filled {
+  color: gold; /* Couleur des étoiles remplies */
+}
+
+.average-note {
+  font-size: 16px;
+  color: #555; /* Couleur du texte pour la note */
+}
+/* Conteneur pour aligner les éléments */
+.review-input-container {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espacement entre les éléments */
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Champ de commentaire */
+.review-input {
+  flex: 1; /* Prend tout l'espace disponible */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  resize: none; /* Désactive le redimensionnement */
+  height:50px;
+  font-size: 14px;
+}
+
+/* Bouton */
+
+
+/* Étoiles */
+.rating {
+  display: flex;
+  gap: 5px; /* Espacement entre les étoiles */
+}
+
+.rating span {
+  font-size: 24px;
+  cursor: pointer;
+  color: gray; /* Couleur des étoiles non sélectionnées */
+  transition: color 0.3s;
+}
+
+.rating span.selected {
+  color: gold; /* Couleur des étoiles sélectionnées */
+}
+
+
+
+/* Liste des avis */
+.review-item {
+  margin-top: 20px;
+}
+
+.review-item .rating {
+  display: inline-flex;
+}
+
+.review-item p {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  color: #333;
+}
+.review-list-container {
+  /* Centrage et limitation de la largeur */
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+.review-list-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.review-list-container::-webkit-scrollbar-thumb {
+  background-color: #4A195A;
+  border-radius: 4px;
+}
+
+.review-list-container::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+.review-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacement entre les éléments */
+}
+.review-item .date {
+  font-size: 12px;
+  color: #888;
+  text-align: right;
+  margin-top: 10px;
+}
+
+.review-item:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .review-input-container {
+    flex-direction: column;
+    align-items: stretch; /* S'assurer que tout est bien aligné */
+  }
+
+  .review-input {
+    font-size: 14px; /* Réduit légèrement la taille sur mobile */
+    min-height: 40px;
+  }
+
+  .main_btn {
+    font-size: 14px; /* Taille plus petite du bouton */
+    padding: 8px 16px;
+  }
+
+  .rating {
+    justify-content: center;
+    font-size: 20px; /* Réduit la taille des étoiles */
+  }
+}
+
+.brand-logo {
+  width: 80px; /* Taille du logo */
+  height: auto; /* Garde les proportions */
+  object-fit: contain; /* S'assure que le logo reste propre */
+  margin-right: 10px; /* Espacement avec le titre */
+}
+
+.product-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.blink-stock {
+  animation: blink 0.8s ease-in-out 2;
+}
+
+.product-price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #aa0058; /* Couleur du prix */
+}
+.product-price del {
+  margin-left: 8px;
+}
+
+.teintes-section {
+  margin-bottom: 20px;
+}
+
+.teintes {
+  display: flex;
+  gap: 10px; /* Espacement entre les blocs de teintes */
+}
+
+.teinte-item {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.teinte-item:hover {
+  transform: scale(1.1);
+}
+
+.teinte-preview {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.form-select {
+  width: 250px;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.product_count_area {
+  display: flex; /* Active le conteneur flex */
+  align-items: center; /* Alignement vertical au centre */
+  gap: 15px; /* Espacement horizontal entre les éléments */
+}
+
+.product_count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product_count_item {
+  width: 40px; /* Taille des boutons +/- */
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+
+.product_count_item.input-number {
+  width: 50px; /* Largeur de l'input */
+  height: 40px;
+  text-align: center;
+  border: 1px solid #ddd;
+  margin: 0 5px; /* Espacement horizontal */
+}
+
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+.text-success {
+  color: #28a745; /* Vert pour "En stock" */
+  font-weight: bold;
+}
+
+.text-danger {
+  color: #e02e2e; /* Rouge pour "STOCK ÉPUISÉ" */
+  font-weight: bold;
+}
+
+/* Conteneur du logo */
+/* Conteneur pour le logo */
+/* Conteneur du logo */
+
+
+/* Titre du produit */
+.product-title {
+  font-size: 28px;
+  font-weight: bold;
+  word-wrap: break-word; /* Force le retour à la ligne si nécessaire */
+}
+
+
+/* Titre avec hauteur minimale */
+.product-title-container {
+  min-height: 60px; /* Fixe une hauteur minimale */
+  display: flex;
+  align-items: center; /* Centre le titre verticalement */
+}
+
+
+
+/* Fixe les blocs de teintes et le reste */
+.teinte-item {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+}
+/* Conteneur du logo */
+.brand-logo-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Section pour "Donner un avis" et le cœur */
+/* Conteneur "Donner un avis" et le cœur */
+.review-section {
+  position: absolute;
+  top: 90px; /* Distance sous le logo */
+  right: 0; /* Aligné avec le logo */
+  text-align: right; /* Centre horizontalement */
+}
+
+.review-text {
+  color: #aa0058; /* Rouge */
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  display: block; /* Force sur une ligne */
+}
+
+.review-text:hover {
+  text-decoration: underline;
+}
+
+.review-heart {
+  margin-top: 5px; /* Espacement entre le texte et l'icône */
+}
+
+.review-heart i {
+  color: #aa0058; /* Couleur de l'icône cœur */
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.review-heart i:hover {
+  color: #B8325B; /* Couleur au survol */
+}
+.teinte-item {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid transparent; /* Bordure transparente par défaut */
+  transition: border 0.3s ease-in-out;
+}
+
+.teinte-item.selected {
+  border: 2px solid #000; /* Couleur noire pour l'encadré */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Optionnel : ombre légère */
+}
+
+.teinte-preview {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  /* Ajuster la hauteur de la bannière pour éviter les chevauchements */
+  .slider-height2 {
+    height: 150px; /* Ajuste la hauteur pour mobile */
+    background-size: cover; /* Assure que l'image couvre toute la zone */
+    background-position: center; /* Centre l'image */
+    z-index: 1; /* Assure que le bloc reste au-dessus des autres éléments */
+    margin-bottom: 175px;
+    position: relative;
+  }
+
+  /* Empêcher l'image de l'article de déborder */
+
+
+  /* Centrer le texte dans le bloc Détails du Produit */
+  .hero-cap {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .hero-cap h2 {
+    font-size: 16px; /* Réduit la taille de la police pour mobile */
+    line-height: 1.4; /* Ajuste l'espacement des lignes */
+    color: #333;
+  }
+
+  /* Conteneur pour mobile */
+  .container {
+    padding: 0 15px;
+  }
+}
+@media (max-width: 768px) {
+  /* Ajuste le conteneur de l'image */
+  .product_img_slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible; /* Permet à l'image de s'étendre si nécessaire */
+    height: auto; /* Ajuste automatiquement la hauteur */
+  }
+h3 .product-title{
+  font-size: 12px;
+}
+  /* Forcer l'image à s'afficher correctement */
+  .product_img_slide img {
+    width: 100%; /* L'image occupe toute la largeur disponible */
+    height: auto; /* Conserve les proportions de l'image */
+    object-fit: contain; /* Assure que toute l'image est visible */
+
+    max-height: none; /* Supprime toute limitation de hauteur */
+    display: block;
+  }
+
+  /* Supprimer toute restriction de hauteur dans les conteneurs parents */
+  .slider-height2, .product_image_area {
+    height: auto; /* Ajuste la hauteur automatiquement */
+    overflow: visible; /* Empêche les coupures */
+  }
+
+  /* Ajouter un espacement entre les sections */
+  .product_image_area {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+.discount-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+@media (min-width: 992px) { /* Pour les écrans de bureau (largeur >= 992px) */
+  .product-image {
+    margin-bottom: 250px; /* Ajoutez la valeur de margin souhaitée */
+  }
+}
+
+
+
+
+

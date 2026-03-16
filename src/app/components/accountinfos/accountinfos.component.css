@@ -1,0 +1,521 @@
+
+.account-page {
+  display: flex;
+  flex-direction: row; /* Organise le contenu en deux colonnes */
+  justify-content: space-between;
+  gap: 20px;
+  padding: 40px;
+}
+
+.left-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.right-column {
+  position:relative;
+  padding: 28px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+.close-timeline {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000;
+  z-index: 1000;
+}
+
+.close-timeline:hover {
+  color: #946b6f;
+}
+
+.order-card, .info-card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-timeline {
+  padding: 20px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+}
+
+
+.timeline-step {
+  margin-bottom: 30px;
+}
+
+.timeline-step h4 {
+  margin-bottom: 10px;
+}
+
+.view-details-btn, .edit-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view-details-btn:hover, .edit-btn:hover {
+  background-color: #2980b9;
+}
+.customized-timeline .p-timeline-event-opposite {
+  font-weight: bold;
+}
+
+.customized-timeline .p-timeline-event-content {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.customized-timeline .p-timeline-event-marker span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 15px; /* Pour ajuster la position verticale */
+}
+
+.shadow-2 {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%; /* S'adapte à la largeur du conteneur */
+  display: flex;
+  justify-content: space-between; /* Espace entre les éléments */
+  align-items: center; /* Aligne verticalement */
+}
+
+/* Alignement et espacement de la rangée */
+.info-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.user-icon {
+  font-size: 80px; /* Taille de l'icône utilisateur */
+  color:  #aa0058; /* Couleur de l'icône */
+}
+
+/* Style des détails de l'information */
+.info-details {
+  flex-grow: 1; /* Occupe tout l'espace disponible */
+}
+
+.info-details p {
+  margin: 5px 0;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Style du bouton */
+.edit-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+  background-color: #2980b9;
+}
+.order-history {
+  max-height: 550px;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+/* Style du modal */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+  margin-left: 350px;
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color:#946b6f;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.modal-content form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.save-btn {
+  background-color: #aa0058;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.save-btn:hover {
+  background-color: #aa0058;
+}
+.btn-danger {
+  background-color: red;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #ff7875;
+  transform: scale(1.05);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cancel-btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* Modale spécifique pour annuler une commande */
+.cancel-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.cancel-modal-content p {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* Bouton Fermer */
+.cancel-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+}
+
+/* Boutons dans la modale */
+.cancel-modal-content button {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.cancel-modal-content button:first-of-type {
+  background-color: #946b6f;
+  color: white;
+}
+
+.cancel-modal-content button:first-of-type:hover {
+  background-color: #946b6f;
+}
+
+.cancel-modal-content button:last-of-type {
+  background-color: #b0b0b0;
+  color: #333;
+}
+
+.cancel-modal-content button:last-of-type:hover {
+  background-color: #b0b0b0;
+}
+.status-header {
+  color: #C686AE;
+}
+/* Cacher le bouton mobile en version bureau */
+.mobile-only {
+  display: none;
+}
+
+/* Cacher le bouton bureau en version mobile */
+.desktop-only {
+  display: block;
+}
+/* Masquer la version mobile en version bureau */
+.mobile-only {
+  display: none;
+}
+
+/* Masquer la version bureau en version mobile */
+.desktop-only {
+  display: block;
+}
+
+/* Styles pour afficher la modale uniquement en mobile */
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .timeline-modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .timeline-modal .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+   margin-top: 70px;
+   margin-left: 8px;
+    width: 94%;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
+
+
+/* Afficher le bouton mobile uniquement pour les écrans de 768px ou moins */
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block;
+    margin-top: 10px; /* Ajustez le margin-top si besoin */
+  }
+
+  .desktop-only {
+    display: none;
+  }
+}
+
+/* Styles pour les écrans de 768px ou moins */
+@media (max-width: 768px) {
+  .banner_area {
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .banner_content h2 {
+    font-size: 1.5rem;
+  }
+
+  .banner_content p {
+    font-size: 1rem;
+  }
+
+  .page_link {
+    display: none; /* Cacher la navigation sur mobile si besoin */
+  }
+
+  .account-page {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .left-column, .right-column {
+    width: 105%;
+    padding: 0;
+  }
+
+  .info-card, .order-history, .order-card, .modal-content, .cancel-modal-content {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .main_btn {
+    font-size: 0.75rem;
+    padding: 0px;
+    width: 91%;
+    margin-bottom: 10px;
+  }
+
+  /* Pour centrer les icônes */
+  .user-icon {
+    font-size: 2rem;
+    margin-right: 10px;
+  }
+
+  .cancel-btn-wrapper, .cancel-modal-content {
+    text-align: center;
+  }
+
+  /* Modal en plein écran pour mobile */
+  .modal-content, .cancel-modal-content {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  /* Chronologie de commande en mode mobile */
+  .p-timeline .p-card {
+    width: 100%;
+  }
+
+  /* Cacher la section du pied de page pour plus de lisibilité sur mobile */
+  app-footer {
+    font-size: 0.8rem;
+  }
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.menu-mobile {
+  box-sizing: border-box;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.menu-mobile ul, .menu-mobile li {
+  margin: 0;
+  padding: 0;
+}
+
+.input[type="date"] {
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.btn-main {
+  background-color: #aa0058;
+  color: #fff;
+  padding: 8px 15px; /* Ajustement du padding du bouton principal */
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  margin: 0; /* Supprime les marges par défaut */
+}
+
+.btn-main:hover {
+  background-color: #aa0058;
+  transform: scale(1.05);
+}
+
+.pi {
+  font-size: 2rem; /* Agrandir l'icône */
+  color: red; /* Modifier la couleur */
+}
+
+.customized-timeline .p-timeline-event-content {
+  margin-bottom: 200px; /* Augmenter l'espace entre les cartes */
+}
+.order-id {
+  color: #aa0058;
+  font-weight: bold; /* (Optionnel) Met en gras pour plus de visibilité */
+}
+
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.logout-btn {
+  background-color: #aa0058;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #880047;
+}

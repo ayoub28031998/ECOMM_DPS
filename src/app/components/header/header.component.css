@@ -1,0 +1,1001 @@
+.selected-category {
+  color: #aa0058 !important;
+}
+.selected-sub-category {
+  color: red !important;
+
+}
+.selectedd {
+  color: red !important;
+  font-weight: bold;
+}
+
+
+.selected-sous-sous-category {
+  color: red !important;
+  font-weight: bold;
+}
+.categories-menu .navbar-nav {
+  display: flex;
+  justify-content: space-between; /* Répartit les éléments sur toute la largeur */
+  width: 100%;
+}
+
+.categories-menu .nav-item {
+  flex-grow: 1; /* Permet aux éléments de s'étendre de manière égale */
+  text-align: center; /* Centre le texte */
+}
+
+.shopping-card .shopping-badge {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: #aa0058;
+  color: #fff;
+  line-height: 25px;
+  text-align: center;
+  border-radius: 30px;
+  font-size: 12px;
+  top: 0px;
+  right: -6px;
+  -webkit-transition: all 0.2s ease-out 0s;
+  -moz-transition: all 0.2s ease-out 0s;
+  -ms-transition: all 0.2s ease-out 0s;
+  -o-transition: all 0.2s ease-out 0s;
+  transition: all 0.2s ease-out 0s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+.custom-search-bar {
+  width: 100%; /* S'étend jusqu'à remplir tout l'espace disponible */
+  max-width: 700px; /* Vous pouvez ajuster cette valeur */
+  margin: 0 auto; /* Centrage */
+}
+
+.custom-search-bar input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.custom-search-bar .search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.search-bar {
+  margin-left: 200px; /* Ajustez cette valeur pour rapprocher ou éloigner */
+  display: inline-block;
+  width: 300px; /* Ajustez la largeur selon vos besoins */
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.search-bar .search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.marque {
+  color: #6c757d;
+}
+.categories-menu {
+
+  background-color: #f8f9fa;
+  padding: 10px 0;
+}
+
+.categories-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.categories-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-weight: bold;
+}
+
+.categories-list li a {
+  text-decoration: none;
+  color: #495057;
+  padding: 5px 15px;
+  transition: color 0.3s;
+}
+
+.categories-list li a:hover {
+  color: #f069b4; /* Changer selon votre thème */
+}
+.souscat{
+  color: #6c757d !important;
+}
+.souscat:hover{
+  color: #990c5a !important;
+}
+/* Barre de recherche */
+.form-box {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Prend toute la largeur de la colonne */
+}
+
+.search-bar {
+  width: 50%; /* Élargit la barre de recherche */
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 25px; /* Bord arrondi */
+}
+
+.search-icon {
+  margin-left: -30px; /* Positionner l'icône à l'intérieur */
+  cursor: pointer;
+}
+
+/* Alignement des icônes */
+.header-right {
+  gap: 10px; /* Ajoute un espace constant entre les éléments */
+  white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+.header-btn {
+  margin-left: 10px; /* Ajoute de l’espace entre le bouton et les icônes */
+}
+
+.shopping-card {
+  position: relative;
+}
+
+.shopping-badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #f00;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 2px 6px;
+}
+
+
+.search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.search-header p {
+  margin: 0;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #999;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+.result-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
+
+.result-price {
+  font-size: 12px;
+  color: #666;
+  margin: 5px 0 0;
+}
+.side-menu {
+  width: 250px;
+  height: 100%;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: -350px; /* Menu caché */
+  z-index: 1050;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.side-menu.open {
+  left: 0; /* Menu visible */
+}
+
+.side-menu-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #f8f9fa;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+  display: none;
+}
+
+.menu-overlay.active {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .mobile-header {
+    padding: 10px;
+    background-color: #fff;
+    /* border-bottom: 1px solid #f0f0f0; */
+  }
+
+  .contact-info {
+    margin-bottom: 0px;
+    display: flex; /* Flexbox pour aligner les éléments en ligne */
+    align-items: center; /* Aligner verticalement */
+    justify-content: center; /* Centrer horizontalement */
+    gap: 8px; /* Espacement entre l'icône et le texte */
+  }
+
+  .contact-info p {
+    font-weight: bold; /* Texte en gras */
+    font-size: 16px; /* Taille du texte */
+    margin: 0; /* Supprime les marges par défaut */
+    color: #333; /* Couleur du texte */
+  }
+
+  .contact-info i {
+    color: #aa0058; /* Couleur de l'icône */
+    font-size: 18px; /* Taille de l'icône */
+    transform: scaleX(-1); /* Inverse l'icône horizontalement */
+    margin-right: 5px; /* Ajoute un petit espace à droite de l'icône */
+  }
+
+
+
+  /* Header Row */
+  .header-row {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    padding: 5px;
+    color: #333;
+  }
+
+  .logo-container {
+    flex: 1;
+    text-align: center;
+  }
+
+  .logo-container img {
+    max-height: 73px;
+  }
+
+  .shopping-card {
+    position: relative;
+    font-size: 24px;
+  }
+
+  .shopping-card a {
+    color: #333;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .shopping-badgee {
+    position: absolute;
+    top: -8px; /* Ajustez cette valeur pour déplacer le badge verticalement */
+    right: -8px; /* Ajustez cette valeur pour déplacer le badge horizontalement */
+    background-color: #aa0058; /* Couleur du badge */
+    color: #fff;
+    font-size: 11px;
+    border-radius: 50%;
+    top: -10px;
+    right: -13px;
+    padding: 2px 6px;
+    font-weight: bold;
+    z-index: 10; /* Assure que le badge est au-dessus de l'icône */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optionnel : pour un effet plus esthétique */
+  }
+  /* .shopping {
+
+
+    right: 13px;
+
+  } */
+
+
+  /* Search Bar */
+  .search-bar-wrapper {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 8px 10px;
+    border-radius: 20px;
+  }
+
+  .search-bar {
+    flex: 1;
+    border: none;
+    background: none;
+    outline: none;
+    padding: 8px 10px;
+    font-size: 14px;
+    margin-left:0px;
+  }
+
+  .search-icon {
+    font-size: 18px;
+    color: #333;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  /* Side Menu */
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1000;
+  }
+
+  .menu-overlay.active {
+    display: block;
+  }
+
+  .side-menu {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1100;
+  }
+
+  .side-menu.open {
+    right: 0;
+  }
+
+  .side-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .side-menu-header h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .categories-list {
+    list-style: none;
+    margin: 0;
+    padding: 15px;
+  }
+
+  .categories-list li {
+    margin-bottom: 10px;
+  }
+
+  .categories-list a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .categories-list a i {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+}
+
+.main-header {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out; /* Transition fluide */
+  padding: 0 0; /* Exemple de rembourrage autour de l'en-tête */
+}
+
+.main-header.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1px 20px; /* Ajustement du rembourrage pour l'en-tête fixe */
+}
+.fixed-dropdown {
+  background: #f6f6f6;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: block;
+  padding: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+.fixed-dropdown .row {
+  display: flex;
+  flex-wrap: wrap; /* Autorise les lignes multiples */
+  justify-content: space-evenly; /* Distribue uniformément les colonnes */
+  gap: 20px; /* Ajoute un espacement uniforme entre elles */
+}
+
+
+.fixed-dropdown strong {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  white-space: normal; /* Allow text wrapping */
+  overflow: visible; /* Show full text */
+  text-overflow: clip; /* Remove ellipsis */
+}
+.fixed-dropdown strong {
+  white-space: normal; /* Autorise le retour à la ligne si nécessaire */
+  overflow: visible; /* Supprime la troncature */
+  text-overflow: clip; /* Désactive les "..." */
+}
+
+
+.fixed-dropdown strong:hover {
+  color: #A72B78;
+}
+
+.fixed-dropdown .w-100 {
+  display: flex;
+  flex-wrap: wrap; /* Permet le retour à la ligne */
+  gap: 20px; /* Espace horizontal et vertical uniforme entre les colonnes */
+  justify-content: space-between; /* Assure un alignement uniforme */
+}
+
+
+
+.fixed-dropdown .p-2 {
+  flex: 1 1 calc(23% - 20px); /* Réduit légèrement la largeur pour 4 colonnes bien alignées */
+  max-width: calc(23% - 20px); /* Empêche les colonnes d'être trop larges */
+  margin-bottom: 20px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.fixed-dropdown .p-2 {
+  margin-bottom: 20px; /* Espacement vertical entre les lignes */
+}
+.fixed-dropdown .p-2 {
+  min-width: 220px; /* Ajustez cette valeur selon vos besoins */
+}
+.fixed-dropdown {
+  width: 90%; /* Réduisez la largeur pour qu'elle s'aligne mieux au contenu */
+  margin: 0 auto; /* Centrez le conteneur */
+}
+.red-block {
+  background-color: #e33434; /* Couleur rouge */
+  width: 1000%; /* Prend toute la largeur de l'écran */
+  position: relative; /* Assurez-vous qu'il reste en place */
+  left: 0; /* Pour aligner avec le bord de l'écran */
+  right:0;
+  margin: 0;
+  padding: 0;
+}
+.custom-dropdown {
+  display: flex;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.dropdown-column {
+  flex: 1;
+  min-width: 150px; /* Largeur minimale pour chaque colonne */
+}
+
+.dropdown-link {
+  display: block;
+  padding: 5px 0;
+  color: #333;
+  text-decoration: none;
+  border-left: 2px solid #f2f2f2;
+}
+
+.dropdown-link:hover {
+  color: #e63946;
+  border-left-color: #e63946;
+}
+/* Global dropdown styling */
+/* Fixe la taille du dropdown */
+
+
+/* Ajout d'une largeur fixe aux liens */
+.nav-link {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  padding: 5px 0;
+  font-size: 14px;
+  border-left: 2px solid transparent;
+  white-space: nowrap; /* Empêche les retours à la ligne */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Ajoute des points de suspension si le texte est trop long */
+
+}
+
+
+.nav-item:hover {
+  position: relative;
+}
+
+.nav-item:hover::after {
+  content: "";
+  position: absolute;
+  bottom: -3px; /* Ajustez la distance pour l'alignement */
+  left: 0;
+  width: 100%;
+  height: 2px; /* Épaisseur de la ligne */
+  background-color: #aa0058; /* Couleur de la ligne */
+}
+
+
+/* Style des sous-catégories */
+.dropdown-menu ul li a {
+  font-size: 13px;
+  padding: 3px 0;
+  white-space: nowrap; /* Empêche les retours à la ligne */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Ajoute des points de suspension si le texte est trop long */
+}
+
+
+.sub-category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.toggle-button:hover {
+  color: #aa0058;
+}
+.dropdown-menu {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; /* Permet d'afficher plusieurs lignes si nécessaire */
+  gap: 20px; /* Espacement entre les colonnes */
+  max-width: 100%; /* Assurez-vous que le menu s'adapte à la largeur */
+}
+
+.dropdown-column {
+  flex: 1 1 40%; /* Chaque colonne occupe environ 33% de la largeur */
+}
+
+.dropdown-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-column li {
+  margin: 5px 0; /* Espacement entre les sous-sous-catégories */
+}
+
+
+
+
+
+.dropdown-menu a {
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-menu a.active {
+  font-weight: bold;
+  color: #aa0058; /* Par exemple, une couleur pour l'élément actif */
+}
+.sub-categories li:active {
+  color: #aa0058; /* Change la couleur du texte en rouge lors du toucher ou du clic */
+  font-weight: bold; /* Optionnel : vous pouvez également rendre le texte plus gras */
+}
+
+/* Sous-catégorie (avec border-left et border-bottom) */
+.dropdown-column {
+
+  border-left: 2px solid transparent; /* Initialement transparent */
+  padding-left: 10px; /* Espacement à gauche */
+  transition: border-color 0.3s ease;
+  margin-bottom: 5px;
+  border-left: 3px solid transparent;/* Animation douce pour le border-left */
+}
+
+.dropdown-column:hover {
+  border-left: 2px solid transparent; /* Couleur du border-left au survol */
+}
+
+.dropdown-column a.nav-link {
+  color: black; /* Couleur par défaut du texte */
+  text-decoration: none; /* Pas de soulignement */
+  transition: color 0.3s ease; /* Animation douce */
+}
+
+.dropdown-column a.nav-link:hover {
+  color: #aa0058; /* Couleur du texte au survol */
+}
+
+/* Ligne horizontale sous chaque sous-catégorie */
+/* Ligne horizontale sous chaque sous-catégorie */
+.sub-category-header {
+  border-bottom: 1px solid #eaeaea; /* Ligne légère entre sous-catégories */
+  padding-bottom: 5px; /* Espacement en bas */
+  margin-bottom: 5px; /* Espacement entre les sous-catégories */
+  width: 500px; /* Longueur fixe de la ligne */
+  display: block; /* Garde la ligne en mode bloc */
+}
+
+
+
+/* Bordure gauche pour les sous-catégories uniquement */
+.sub-category-header.with-border {
+  border-left: 3px solid #aa0058;
+  padding-left: 10px;
+  margin-left: -10px; /* Ajuster si nécessaire */
+}
+
+/* Suppression de la bordure pour les sous-sous-catégories */
+.sub-sub-category-list {
+  margin-left: 20px; /* Indentation pour différencier visuellement */
+  padding-left: 0;
+  border-left: none; /* Pas de bordure pour les sous-sous-catégories */
+}
+
+/* Espacement entre les sous-sous-catégories */
+.sub-sub-category-list li {
+  margin-bottom: 5px;
+}
+
+/* Style sur survol des sous-sous-catégories */
+.sub-sub-category-list li a:hover {
+  color: #aa0058;
+  font-weight: bold;
+}
+.categories-list, .categories-list .nav-item {
+  display: block !important; /* Force un affichage en bloc */
+  float: none !important; /* Désactive tout flottement */
+  flex-direction: column !important; /* Si flex est appliqué, force l'alignement vertical */
+}
+
+  .toggle-icon {
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-left: auto;
+  }
+
+  .categories-list .nav-link {
+    display: flex;
+    align-items: center;
+
+  }
+
+  .categories-list .nav-link .chevron-container {
+    margin-left: auto; /* Place la flèche à l'extrémité droite */
+  }
+
+  .categories-list .nav-link i {
+    margin-right: 10px; /* Espacement entre l'icône et le texte */
+  }
+
+  .categories-list .nav-link span {
+    flex-grow: 1; /* Étend le texte pour occuper l'espace disponible */
+  }
+  .fleche {
+    margin-left: auto; /* Place la flèche à l'extrémité droite */
+  }
+/* Sous-catégories */
+/* Sous-catégories */
+.sub-category-header {
+  display: flex;
+  justify-content: space-between; /* Aligne le texte et le bouton "+" */
+  align-items: center;
+  padding: 5px 0;
+}
+
+/* Sous-sous-catégories : alignement en dessous */
+.sub-sub-category-list {
+  margin: 5px 0 0 20px; /* Décalage par rapport à la sous-catégorie */
+  padding-left: 0; /* Supprime l'espacement supplémentaire */
+}
+
+.sub-sub-category-list li {
+  padding: 5px 0; /* Espacement vertical entre chaque élément */
+}
+
+/* Supprime l'affichage côte à côte si existant */
+.sub-category-header + .sub-sub-category-list {
+  display: block;
+  position: relative;
+}
+.sub-sub-category-list {
+  display: block;
+  margin-left: 20px; /* Ajustez la marge selon le besoin */
+  margin-top: 5px;
+}
+.sub-sub-category-list {
+  clear: both;
+}
+/* Navbar styles */
+
+.header-info-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-info-right ul {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.header-info-right ul li {
+  margin: 0;
+  position: relative; /* garde la position nécessaire pour le menu déroulant */
+}
+.user-menu-list {
+  display: none;
+}
+
+.user-menu-list.show {
+  display: block;
+}
+
+
+
+/* User menu styles */
+.user-menu {
+
+  position: relative;
+}
+
+.user-menu-toggle {
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+}
+
+.user-menu-toggle.active {
+  color: #aa0058;
+}
+
+.user-menu-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color:#aa0058;
+  background-color: blue;
+cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  min-width: 200px;
+  z-index: 1000;
+}
+.user-menu-list:hover {
+
+  color: #aa0058;
+}
+
+.user-menu-list.show {
+  display: block;
+}
+
+.user-menu-item {
+  padding: 0.5rem 1rem;
+  color: #000;
+  text-decoration: none;
+  display: block;
+}
+
+.user-menu-item:hover {
+
+  color: #aa0058;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-6 {
+  width: 50%; /* Divise la largeur en deux colonnes */
+  box-sizing: border-box;
+  padding: 10px; /* Ajoute un espace entre les colonnes */
+}
+
+.sub-sub-category-list {
+  margin-top: 5px;
+}
+
+.sub-category-header {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.selected {
+  color: #ff6600; /* Couleur pour la marque sélectionnée */
+  font-weight: bold;
+}
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 212px;
+  width: 49%;
+  max-height: 300px;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Active le scroll vertical */
+  overflow-x: hidden;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.result-item:hover {
+  background-color: #f8f8f8;
+}
+
+.result-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.result-details {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styles pour la version mobile */
+.search-results-mobile {
+  position: absolute;
+  top: 26%;
+  left: 14px;
+  right: 0;
+  width: 92%;
+  max-height: 300px;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Active le scroll vertical */
+  overflow-x: hidden;
+}
+
+.search-results-mobile .result-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.search-results-mobile .result-item:hover {
+  background-color: #f8f8f8;
+}
+
+.search-results-mobile .result-image {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.search-results-mobile .result-details {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 768px) {
+  .search-results {
+    display: none;
+  }
+
+  .search-results-mobile {
+    display: block;
+  }
+}
+
+.no-results-message {
+  padding: 10px;
+  color: #888;
+  font-size: 12px;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+

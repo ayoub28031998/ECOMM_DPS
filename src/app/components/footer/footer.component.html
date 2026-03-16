@@ -1,0 +1,108 @@
+ <!--================ start footer Area  =================-->
+ <footer>
+  <div class="footer-area footer-padding">
+    <div class="container">
+        <div class="row d-flex justify-content-between">
+            <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+               <div class="single-footer-caption mb-50">
+                 <div class="single-footer-caption mb-30">
+                      <!-- logo -->
+                     <div class="footer-logo">
+                      <h4 style="color:#aa0058">DOCUMENTS PILOTE</h4>
+                     </div>
+                     <div class="footer-tittle">
+                         <div class="footer-pera">
+                             <p style=" text-align: justify;"> Bienvenue sur notre plateforme e-commerce spécialisée dans la vente en ligne de produits cosmétiques et parapharmaceutiques.
+                              Nous proposons une large gamme de produits pour prendre soin de vous au quotidien.</p>
+                        </div>
+                     </div>
+                 </div>
+               </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
+                <div class="single-footer-caption mb-50">
+                    <div class="footer-tittle">
+                        <h4>Catégories</h4>
+                        <ul>
+                          <li *ngFor="let category of firstCategories">
+                            <a class="nav-link" style="cursor:pointer" (click)="navigateToCategory(category.id)" >{{ category.libelle }}</a>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+                <div class="single-footer-caption mb-50">
+                    <div class="footer-tittle">
+                        <h4>Plus de catégories</h4>
+                        <ul>
+                          <li *ngFor="let category of otherCategories">
+                            <a class="nav-link" style="cursor:pointer"  (click)="navigateToCategory(category.id)" >{{ category.libelle}}</a>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
+              <div class="single-footer-caption mb-50">
+                <div class="footer-tittle">
+                  <h4>Informations</h4>
+                  <ul class="info-section"> <!-- Ajout de la classe spécifique ici -->
+                    <li>
+                      <i class="fas fa-phone icon" style="transform: scaleX(-1);"></i>
+                      <a style="cursor: pointer;"> 53 122 400</a>
+                    </li>
+                    <li>
+                      <i class="fas fa-envelope icon"></i>
+                      <a href="mailto:xo.beauty2025@gmail.com">xo.beauty2025&#64;gmail.com</a>
+                    </li>
+                    <li>
+                      <i class="fab fa-facebook-f icon"></i>
+                      <a href="https://www.facebook.com/share/14yC8XNHoE/?mibextid=wwXIfr" target="_blank">
+                        Facebook:xoBeauty
+                      </a>
+                    </li>
+                    <li>
+                      <i class="fab fa-instagram icon"></i>
+                      <a href="https://www.instagram.com/xobeauty.cosmetics/" target="_blank">
+                        xobeauty.cosmetics
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+        </div>
+        <!-- Footer bottom -->
+        <div class="row">
+         <div class="col-xl-7 col-lg-7 col-md-7">
+             <div class="footer-copy-right">
+                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright 2025 &copy;<script>document.write(new Date().getFullYear());</script> Tous droits réservés | Créé avec <i style="color:#aa0058" class="ti-heart" aria-hidden="true"></i> par <a href="http://premiumnetagency.com/" target="_blank" style="color:#aa0058">PreNetAgency</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>                   </div>
+         </div>
+          <div class="col-xl-5 col-lg-5 col-md-5">
+             <div class="footer-copy-right f-right">
+                 <!-- social -->
+                 <div class="footer-social">
+                  <a href="https://www.instagram.com/xobeauty.cosmetics/" target="_blank">
+                      <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="https://www.facebook.com/share/14yC8XNHoE/?mibextid=wwXIfr" target="_blank">
+                      <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="https://wa.me/+21653122400" target="_blank">
+                      <i class="fab fa-whatsapp"></i>
+                  </a>
+              </div>
+
+             </div>
+         </div>
+     </div>
+    </div>
+</div>
+<!-- Footer End-->
+  </footer>
+  <!--================ End footer Area  =================-->

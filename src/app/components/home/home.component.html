@@ -1,0 +1,782 @@
+
+<main>
+
+  <!-- slider Area Start -->
+  <div class="slider-area ">
+
+      <!-- <div class="slider-active">
+
+          <div class="single-slider slider-height"  style="background-image: url('../../../assets/img/hero/h1_hero.jpg'); ">
+              <div class="container">
+                  <div class="row d-flex align-items-center justify-content-between">
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-none d-md-block">
+                          <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
+                              <img src="assets/img/hero/hero_man.png" alt="">
+                          </div>
+                      </div>
+                      <div class="col-xl-5 col-lg-5 col-md-5 col-sm-8">
+                          <div class="hero__caption">
+                            <span data-animation="fadeInRight" data-delay=".4s">60% de Réduction</span>
+                            <h1 data-animation="fadeInRight" data-delay=".6s">Collection <br> Hivernale</h1>
+                            <p data-animation="fadeInRight" data-delay=".8s">Découvrez notre meilleure collection de beauté pour cet hiver !</p>
+
+                              <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
+                                  <a href="#/shop" class="btn hero-btn">Découvrir</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+      </div> -->
+    <!--   <div class="slider">
+        <div class="slider-content">
+          <img [src]="images[currentImageIndex]" alt="Slider Image" />
+          <button class="arrow-left" (click)="prevImage()">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="arrow-right" (click)="nextImage()">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div> -->
+
+
+  </div>
+
+  <!-- slider Area End-->
+  <!-- Category Area Start-->
+
+
+
+
+  <!-- Category Area End-->
+  <!-- Latest Products Start -->
+  <section class="latest-product-area padding-bottom" *ngIf="isDesktop && ListArticlesPromo.length>0" style="padding-bottom: 50px;">
+    <div class="container">
+      <div class="row product-btn d-flex justify-content-between align-items-center">
+        <!-- Section Titre -->
+        <div class="col-xl-4 col-lg-5 col-md-5">
+            <div class="section-tittle mb-30">
+                <h2>Promotions</h2>
+            </div>
+        </div>
+
+        <!-- Flèches de navigation à droite -->
+        <div class="col-xl-8 col-lg-7 col-md-7 d-flex justify-content-end align-items-center">
+            <div class="navigation-buttons">
+                <button class="btn" (click)="changePage('prev', 'promo')" [disabled]="currentPagePromo === 0">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="btn" (click)="changePage('next', 'promo')" [disabled]="(currentPagePromo + 1) * itemsPerPage >= ListArticlesPromo.length">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 text-right">
+            <div class="properties__button f-right">
+                <nav>
+                    <!-- Ajoute ici des boutons de filtrage si nécessaire -->
+                </nav>
+            </div>
+        </div>
+    </div>
+
+        <!-- Nav Card -->
+        <div class="tab-content" id="nav-tabContent">
+            <!-- card one -->
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let article of promoArticles">
+                  <div class="single-product mb-60 d-flex flex-column justify-content-between">
+                    <div class="product-img">
+                      <img [src]="article.images[0]?.data" alt="" (click)="goToProduct(article.id, article.libelle)" style="cursor: pointer;"/>
+                      <div *ngIf="article.promo !== 0" class="discount-badge">
+                        -{{ ((1 - article.prix_final / article.prix_ttc) * 100) | number:'1.0-0' }}%
+                      </div>
+                    </div>
+                    <div class="product-caption">
+                     <!--  <div class="product-ratting">
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star low-star"></i>
+                        <i class="far fa-star low-star"></i>
+                      </div> -->
+                      <div class="product-details text-center">
+                        <h4 (click)="goToProduct(article.id, article.libelle)" class="product-title">{{ article.libelle }}</h4>
+                        <div class="product-price">
+                          <span *ngIf="article.promo !== 0" class="mr-4">{{ article.prix_final | number:'1.3-3' }} DT</span>
+                          <del *ngIf="article.promo !== 0">{{ article.prix_ttc | number:'1.3-3' }} DT</del>
+                          <span *ngIf="article.promo === 0" class="mr-4">{{ article.prix_ttc | number:'1.3-3'}} DT</span>
+                        </div>
+                      </div>
+
+                      <div class="product-buttons">
+                        <a (click)="goToProduct(article.id, article.libelle)"
+                        class="btn-icon btn-eye" style="text-decoration: none;">
+                          <i class="ti-eye"></i>
+                        </a>
+                        <button (click)="addToCart(article)" class="btn-main">
+                          <i class="ti-shopping-cart"></i> Commander
+                        </button>
+                        <a (click)="addToWishlist(article)" class="btn-icon btn-heart">
+                          <i class="ti-heart"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <!-- Card three -->
+
+
+
+        </div>
+    </div>
+</section>
+
+<section class="latest-product-area padding-bottom" *ngIf="!isDesktop && ListArticlesPromo.length>0">
+  <div class="container">
+    <div class="row product-btn d-flex justify-content-between align-items-center">
+      <!-- Section Titre -->
+      <div class="col-12 col-md-5 col-lg-5 col-xl-4">
+          <div class="section-tittle mb-30">
+              <h2>Promotions</h2>
+          </div>
+      </div>
+
+      <!-- Flèches de navigation alignées à droite -->
+      <div class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex justify-content-end align-items-center">
+          <div class="navigation-buttons">
+              <button class="btn" (click)="changePage('prev', 'promo')" [disabled]="currentPagePromo === 0">
+                  <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="btn" (click)="changePage('next', 'promo')" [disabled]="(currentPagePromo + 1) * itemsPerPage >= ListArticlesPromo.length">
+                  <i class="fas fa-chevron-right"></i>
+              </button>
+          </div>
+      </div>
+  </div>
+
+
+      <!-- Nav Card -->
+      <div class="tab-content" id="nav-tabContent">
+          <!-- card one -->
+          <div >
+            <div class="container">
+              <div class="row">
+                <!-- Article 1 -->
+                <div class="col-6 col-md-4 mb-4" *ngFor="let article of promoArticles">
+                  <div class="single-product">
+                    <div class="product-img">
+                      <img [src]="article.images[0]?.data" alt="Article Image" class="img-fluid" (click)="goToProduct(article.id, article.libelle)" style="cursor: pointer;" />
+                      <div *ngIf="article.promo !== 0" class="badge">
+                        -{{ ((1 - article.prix_final / article.prix_ttc) * 100) | number: '1.0-0' }}%
+                      </div>
+                    </div>
+                    <div class="product-caption text-center">
+                      <h4 (click)="goToProduct(article.id, article.libelle)" class="product-title">
+                        {{ article.libelle }}
+                      </h4>
+                      <div class="product-price">
+                        <span *ngIf="article.promo !== 0">{{ article.prix_final | number: '1.3-3' }} DT</span>
+                        <del *ngIf="article.promo !== 0">{{ article.prix_ttc | number: '1.3-3' }} DT</del>
+                        <span *ngIf="article.promo === 0">{{ article.prix_ttc | number: '1.3-3' }} DT</span>
+                      </div>
+                    </div>
+                    <div class="product-buttons">
+                      <a (click)="goToProduct(article.id, article.libelle)"
+                      class="btn-icon btn-eye" style="text-decoration: none;">
+                        <i class="ti-eye"></i>
+                      </a>
+                      <button (click)="addToCart(article)" class="btn-main">
+                        <i class="ti-shopping-cart"></i> Commander
+                      </button>
+                      <a (click)="addToWishlist(article)" class="btn-icon btn-heart">
+                        <i class="ti-heart"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Flèches de navigation -->
+
+          </div>
+
+
+
+          <!-- Card three -->
+
+
+
+      </div>
+  </div>
+</section>
+
+  <!-- <div class="best-product-area lf-padding" >
+     <div class="product-wrapper bg-height" style="background-image: url('assets/img/categori/card.png')">
+          <div class="container position-relative">
+              <div class="row justify-content-between align-items-end">
+                  <div class="product-man position-absolute  d-none d-lg-block">
+                      <img src="assets/img/categori/card-man.png" alt="">
+                  </div>
+                  <div class="col-xl-2 col-lg-2 col-md-2 d-none d-lg-block">
+                      <div class="vertical-text">
+                        <span>Beauté</span>
+
+                      </div>
+                  </div>
+                  <div class="col-xl-8 col-lg-8">
+                      <div class="best-product-caption">
+                        <h2>Trouvez les meilleurs produits<br> dans notre boutique</h2>
+                        <p>Découvrez des produits de beauté soigneusement sélectionnés pour sublimer votre quotidien.</p>
+                        <a href="#/shop" class="btn hero-btn">Découvrir</a>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+     </div>
+
+     <div class="shape bounce-animate d-none d-md-block">
+         <img src="assets/img/categori/card-shape.png" alt="">
+     </div>
+  </div> -->
+
+  <section class="latest-product-area padding-bottom" *ngIf="isDesktop" style="padding-bottom: 50px;">
+    <div class="container">
+      <div class="row product-btn d-flex justify-content-between align-items-center">
+        <!-- Section Titre -->
+        <div class="col-xl-4 col-lg-5 col-md-5">
+            <div class="section-tittle mb-30">
+              <h2>Nouveautés</h2>
+            </div>
+        </div>
+
+        <!-- Flèches de navigation à droite -->
+        <div class="col-xl-8 col-lg-7 col-md-7 d-flex justify-content-end align-items-center">
+            <div class="navigation-buttons">
+                <button class="btn"  (click)="changePage('prev', 'nouveautes')" [disabled]="currentPageNouveautes === 0">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="btn"  (click)="changePage('next', 'nouveautes')" [disabled]="(currentPageNouveautes + 1) * itemsPerPage >= ListArticles.length">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 text-right">
+            <div class="properties__button f-right">
+                <nav>
+                    <!-- Ajoute ici des boutons de filtrage si nécessaire -->
+                </nav>
+            </div>
+        </div>
+    </div>
+
+        <!-- Nav Card -->
+        <div class="tab-content" id="nav-tabContent">
+            <!-- card one -->
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let article of nouveautesArticles">
+                  <div class="single-product mb-60 d-flex flex-column justify-content-between">
+                    <div class="product-img">
+                      <img [src]="article.images[0]?.data" alt="" (click)="goToProduct(article.id, article.libelle)" style="cursor: pointer;"/>
+                      <div *ngIf="article.promo !== 0" class="discount-badge">
+                        -{{ ((1 - article.prix_final / article.prix_ttc) * 100) | number:'1.0-0' }}%
+                      </div>
+                    </div>
+                    <div class="product-caption">
+                     <!--  <div class="product-ratting">
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star low-star"></i>
+                        <i class="far fa-star low-star"></i>
+                      </div> -->
+                      <div class="product-details text-center">
+                        <h4 (click)="goToProduct(article.id, article.libelle)" class="product-title">{{ article.libelle }}</h4>
+                        <div class="product-price">
+                          <span *ngIf="article.promo !== 0" class="mr-4">{{ article.prix_final | number:'1.3-3' }} DT</span>
+                          <del *ngIf="article.promo !== 0">{{ article.prix_ttc | number:'1.3-3' }} DT</del>
+                          <span *ngIf="article.promo === 0" class="mr-4">{{ article.prix_ttc | number:'1.3-3'}} DT</span>
+                        </div>
+                      </div>
+
+                      <div class="product-buttons">
+                        <a (click)="goToProduct(article.id, article.libelle)" class="btn-icon btn-eye" style="text-decoration: none;">
+                          <i class="ti-eye"></i>
+                        </a>
+                        <button (click)="addToCart(article)" class="btn-main">
+                          <i class="ti-shopping-cart"></i> Commander
+                        </button>
+                        <a (click)="addToWishlist(article)" class="btn-icon btn-heart">
+                          <i class="ti-heart"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <!-- Card three -->
+
+
+
+        </div>
+    </div>
+</section>
+
+<section class="latest-product-area padding-bottom" *ngIf="!isDesktop">
+  <div class="container">
+    <div class="row product-btn d-flex justify-content-between align-items-center">
+      <!-- Section Titre -->
+      <div class="col-12 col-md-5 col-lg-5 col-xl-4">
+          <div class="section-tittle mb-30">
+            <h2>Nouveautés</h2>
+          </div>
+      </div>
+
+      <!-- Flèches de navigation alignées à droite -->
+      <div class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex justify-content-end align-items-center">
+          <div class="navigation-buttons">
+              <button class="btn" (click)="changePage('prev' , 'nouveautes')" [disabled]="currentPageNouveautes === 0">
+                  <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="btn" (click)="changePage('next' , 'nouveautes')" [disabled]="(currentPageNouveautes + 1) * itemsPerPage >= ListArticles.length">
+                  <i class="fas fa-chevron-right"></i>
+              </button>
+          </div>
+      </div>
+  </div>
+
+
+      <!-- Nav Card -->
+      <div class="tab-content" id="nav-tabContent">
+          <!-- card one -->
+          <div >
+            <div class="container">
+              <div class="row">
+                <!-- Article 1 -->
+                <div class="col-6 col-md-4 mb-4" *ngFor="let article of nouveautesArticles">
+                  <div class="single-product">
+                    <div class="product-img">
+                      <img [src]="article.images[0]?.data" alt="Article Image" class="img-fluid" (click)="goToProduct(article.id, article.libelle)" style="cursor: pointer;" />
+                      <div *ngIf="article.promo !== 0" class="discount-badge">
+                        -{{ ((1 - article.prix_final / article.prix_ttc) * 100) | number: '1.0-0' }}%
+                      </div>
+                    </div>
+                    <div class="product-caption text-center">
+                      <h4 (click)="goToProduct(article.id, article.libelle)" class="product-title">
+                        {{ article.libelle }}
+                      </h4>
+                      <div class="product-price">
+                        <span *ngIf="article.promo !== 0">{{ article.prix_final | number: '1.3-3' }} DT</span>
+                        <del *ngIf="article.promo !== 0">{{ article.prix_ttc | number: '1.3-3' }} DT</del>
+                        <span *ngIf="article.promo === 0">{{ article.prix_ttc | number: '1.3-3' }} DT</span>
+                      </div>
+                    </div>
+                    <div class="product-buttons">
+                      <a (click)="goToProduct(article.id, article.libelle)" class="btn-icon btn-eye" style="text-decoration: none;">
+                        <i class="ti-eye"></i>
+                      </a>
+                      <button (click)="addToCart(article)" class="btn-main">
+                        <i class="ti-shopping-cart"></i> Commander
+                      </button>
+                      <a (click)="addToWishlist(article)" class="btn-icon btn-heart">
+                        <i class="ti-heart"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Flèches de navigation -->
+
+          </div>
+
+
+
+          <!-- Card three -->
+
+
+
+      </div>
+  </div>
+</section>
+
+  <!-- <div class="best-collection-area section-padding2">
+      <div class="container">
+          <div class="row d-flex justify-content-between align-items-end">
+
+              <div class="col-xl-4 col-lg-4 col-md-6">
+                  <div class="best-left-cap">
+                      <h2>Best Collection of This Month</h2>
+                      <p>Designers who are interesten crea.</p>
+                      <a href="#" class="btn shop1-btn">Shop Now</a>
+                  </div>
+                  <div class="best-left-img mb-30 d-none d-sm-block">
+                      <img src="assets/img/collection/collection1.png" alt="">
+                  </div>
+              </div>
+
+               <div class="col-xl-2 col-lg-2 d-none d-lg-block">
+                  <div class="best-mid-img mb-30 ">
+                      <img src="assets/img/collection/collection2.png" alt="">
+                  </div>
+              </div>
+
+              <div class="col-xl-4 col-lg-6 col-md-6">
+                  <div class="best-right-cap ">
+                     <div class="best-single mb-30">
+                         <div class="single-cap">
+                             <h4>Menz Winter<br> Jacket</h4>
+                         </div>
+                         <div class="single-img">
+                            <img src="assets/img/collection/collection3.png" alt="">
+                         </div>
+                     </div>
+                  </div>
+                  <div class="best-right-cap">
+                     <div class="best-single mb-30">
+                         <div class="single-cap active">
+                             <h4>Menz Winter<br>Jacket</h4>
+                         </div>
+                         <div class="single-img">
+                            <img src="assets/img/collection/collection4.png" alt="">
+                         </div>
+                     </div>
+                  </div>
+                  <div class="best-right-cap">
+                     <div class="best-single mb-30">
+                         <div class="single-cap">
+                             <h4>Menz Winter<br> Jacket</h4>
+                         </div>
+                         <div class="single-img">
+                            <img src="assets/img/collection/collection5.png" alt="">
+                         </div>
+                     </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div> -->
+
+  <!-- <div class="latest-wrapper lf-padding">
+      <div class="latest-area latest-height d-flex align-items-center" data-background="assets/img/collection/latest-offer.png">
+          <div class="container">
+              <div class="row d-flex align-items-center">
+                  <div class="col-xl-5 col-lg-5 col-md-6 offset-xl-1 offset-lg-1">
+                      <div class="latest-caption">
+                          <h2>Get Our<br>Latest Offers News</h2>
+                          <p>Subscribe news latter</p>
+                      </div>
+                  </div>
+                   <div class="col-xl-5 col-lg-5 col-md-6 ">
+                      <div class="latest-subscribe">
+                          <form action="#">
+                              <input type="email" placeholder="Your email here">
+                              <button>Shop Now</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="man-shape">
+              <img src="assets/img/collection/latest-man.png" alt="">
+          </div>
+      </div>
+  </div> -->
+
+  <section class="latest-product-area padding-bottom" *ngIf="isDesktop" style="padding-bottom: 50px;">
+    <div class="container">
+      <div class="row product-btn d-flex justify-content-between align-items-center">
+        <!-- Section Titre -->
+        <div class="col-xl-4 col-lg-5 col-md-5">
+            <div class="section-tittle mb-30">
+                <h2>Produits</h2>
+            </div>
+        </div>
+
+        <!-- Flèches de navigation à droite -->
+        <div class="col-xl-8 col-lg-7 col-md-7 d-flex justify-content-end align-items-center">
+            <div class="navigation-buttons">
+                <button class="btn"  (click)="changePage('prev', 'produits')" [disabled]="currentPage === 0">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="btn"  (click)="changePage('next', 'produits')" [disabled]="(currentPage + 1) * itemsPerPage >= ListArticles.length">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 text-right">
+            <div class="properties__button f-right">
+                <nav>
+                    <!-- Ajoute ici des boutons de filtrage si nécessaire -->
+                </nav>
+            </div>
+        </div>
+    </div>
+
+        <!-- Nav Card -->
+        <div class="tab-content" id="nav-tabContent">
+            <!-- card one -->
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let article of paginatedArticles">
+                  <div class="single-product mb-60 d-flex flex-column justify-content-between">
+                    <div class="product-img">
+                      <img [src]="article.images[0]?.data" alt="" (click)="goToProduct(article.id, article.libelle)" style="cursor: pointer;"/>
+                      <div *ngIf="article.promo !== 0" class="discount-badge">
+                        -{{ ((1 - article.prix_final / article.prix_ttc) * 100) | number:'1.0-0' }}%
+                      </div>
+                    </div>
+                    <div class="product-caption">
+                     <!--  <div class="product-ratting">
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star low-star"></i>
+                        <i class="far fa-star low-star"></i>
+                      </div> -->
+                      <div class="product-details text-center">
+                        <h4 (click)="goToProduct(article.id, article.libelle)" class="product-title">{{ article.libelle }}</h4>
+                        <div class="product-price">
+                          <span *ngIf="article.promo !== 0" class="mr-4">{{ article.prix_final | number:'1.3-3' }} DT</span>
+                          <del *ngIf="article.promo !== 0">{{ article.prix_ttc | number:'1.3-3' }} DT</del>
+                          <span *ngIf="article.promo === 0" class="mr-4">{{ article.prix_ttc | number:'1.3-3'}} DT</span>
+                        </div>
+                      </div>
+
+                      <div class="product-buttons">
+                        <a (click)="goToProduct(article.id, article.libelle)" class="btn-icon btn-eye" style="text-decoration: none;">
+                          <i class="ti-eye"></i>
+                        </a>
+                        <button (click)="addToCart(article)" class="btn-main">
+                          <i class="ti-shopping-cart"></i> Commander
+                        </button>
+                        <a (click)="addToWishlist(article)" class="btn-icon btn-heart">
+                          <i class="ti-heart"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <!-- Card three -->
+
+
+
+        </div>
+    </div>
+</section>
+
+<section class="latest-product-area padding-bottom" *ngIf="!isDesktop">
+  <div class="container">
+    <div class="row product-btn d-flex justify-content-between align-items-center">
+      <!-- Section Titre -->
+      <div class="col-12 col-md-5 col-lg-5 col-xl-4">
+          <div class="section-tittle mb-30">
+              <h2>Produits</h2>
+          </div>
+      </div>
+
+      <!-- Flèches de navigation alignées à droite -->
+      <div class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex justify-content-end align-items-center">
+          <div class="navigation-buttons">
+              <button class="btn" (click)="changePage('prev' , 'produits')" [disabled]="currentPage === 0">
+                  <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="btn"  (click)="changePage('next', 'produits')" [disabled]="(currentPage + 1) * itemsPerPage >= ListArticles.length">
+                  <i class="fas fa-chevron-right"></i>
+              </button>
+          </div>
+      </div>
+  </div>
+
+
+      <!-- Nav Card -->
+      <div class="tab-content" id="nav-tabContent">
+        <!-- card one -->
+        <div >
+          <div class="container">
+            <div class="row">
+              <!-- Article 1 -->
+              <div class="col-6 col-md-4 mb-4" *ngFor="let article of paginatedArticles">
+                <div class="single-product">
+                  <div class="product-img">
+                    <img [src]="article.images[0]?.data" alt="Article Image" class="img-fluid" (click)="goToProduct(article.id, article.libelle)" style="cursor: pointer;" />
+                    <div *ngIf="article.promo !== 0" class="discount-badge">
+                      -{{ ((1 - article.prix_final / article.prix_ttc) * 100) | number: '1.0-0' }}%
+                    </div>
+                  </div>
+                  <div class="product-caption text-center">
+                    <h4 (click)="goToProduct(article.id, article.libelle)" class="product-title">
+                      {{ article.libelle }}
+                    </h4>
+                    <div class="product-price">
+                      <span *ngIf="article.promo !== 0">{{ article.prix_final | number: '1.3-3' }} DT</span>
+                      <del *ngIf="article.promo !== 0">{{ article.prix_ttc | number: '1.3-3' }} DT</del>
+                      <span *ngIf="article.promo === 0">{{ article.prix_ttc | number: '1.3-3' }} DT</span>
+                    </div>
+                  </div>
+                  <div class="product-buttons">
+                    <a (click)="goToProduct(article.id, article.libelle)" class="btn-icon btn-eye" style="text-decoration: none;">
+                      <i class="ti-eye"></i>
+                    </a>
+                    <button (click)="addToCart(article)" class="btn-main">
+                      <i class="ti-shopping-cart"></i> Commander
+                    </button>
+                    <a (click)="addToWishlist(article)" class="btn-icon btn-heart">
+                      <i class="ti-heart"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Flèches de navigation -->
+
+        </div>
+
+
+
+        <!-- Card three -->
+
+
+
+    </div>
+
+  </div>
+</section>
+
+<!-- <section class="latest-product-area padding-bottom" style="padding-bottom: 0px;">
+  <div class="container">
+    <div class="row product-btn d-flex justify-content-end align-items-end">
+        <div class="col-xl-4 col-lg-5 col-md-5">
+            <div class="section-tittle mb-30">
+                <h2>Nos Marques</h2>
+            </div>
+        </div>
+        <div class="col-xl-8 col-lg-7 col-md-7">
+            <div class="properties__button f-right">
+                <nav>
+               
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="marques-container" id="marques-container">
+      <div class="marque-item" *ngFor="let marque of Marques">
+        <img
+          class="marque-img"
+          [src]="marque.image"
+          [alt]="marque.libelle"
+          style="cursor: pointer;"
+          (click)="navigateToBrand(marque)"
+        />
+
+      </div>
+
+    </div>
+  </div>
+</section> -->
+
+  <div class="shop-method-area section-padding30" style="padding-bottom: 0px;">
+      <div class="container">
+          <div class="row d-flex justify-content-between">
+              <div class="col-xl-3 col-lg-3 col-md-6">
+                  <div class="single-method mb-40">
+                      <i style="color:#aa0058" class="ti-package"></i>
+                      <h6>Livraison Rapide</h6>
+                      <p>Expédition rapide partout en Tunisie.</p>
+                  </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-6">
+                  <div class="single-method mb-40">
+                      <i style="color:#aa0058" class="ti-unlock"></i>
+                      <h6>Produits de Qualité</h6>
+                      <p>Une sélection pour tous vos besoins.</p>
+                  </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-6">
+                  <div class="single-method mb-40">
+                      <i style="color:#aa0058" class="ti-reload"></i>
+                      <h6>Support Client 24/7</h6>
+                      <p>Nous répondons à toutes vos question.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+<!--
+  <div class="gallery-wrapper lf-padding">
+      <div class="gallery-area">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="gallery-items">
+                      <img src="assets/img/gallery/gallery1.jpg" alt="">
+                  </div>
+                  <div class="gallery-items">
+                      <img src="assets/img/gallery/gallery2.jpg" alt="">
+                  </div>
+                  <div class="gallery-items">
+                      <img src="assets/img/gallery/gallery3.jpg" alt="">
+                  </div>
+                  <div class="gallery-items">
+                      <img src="assets/img/gallery/gallery4.jpg" alt="">
+                  </div>
+                  <div class="gallery-items">
+                      <img src="assets/img/gallery/gallery5.jpg" alt="">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div> -->
+  <div class="single-slider slider-height2 d-flex align-items-center justify-content-center" style="background-image: url('../../../assets/img/hero/area.png'); ">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="hero-cap text-center">
+                    <h2></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main>
+
+
+    <!--================ End Blog Area =================-->
+
+   <app-footer></app-footer>

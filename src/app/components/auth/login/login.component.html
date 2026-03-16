@@ -1,0 +1,67 @@
+<div class="slider-area ">
+  <!-- Mobile Menu -->
+  <div class="single-slider slider-height2 d-flex align-items-center justify-content-center" style="background-image: url('../../../assets/img/hero/area.png'); ">
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-12">
+                  <div class="hero-cap text-center">
+                      <h2>Login</h2>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- slider Area End-->
+
+<!--================login_part Area =================-->
+<section class="login_part section_padding ">
+  <div class="container">
+      <div class="row align-items-center">
+          <div class="col-lg-6 col-md-6">
+              <div class="login_part_text text-center">
+                  <div class="login_part_text_iner">
+                    <h2>Nouveau dans notre boutique ?</h2>
+                    <p>Des innovations voient le jour chaque jour dans le domaine de la beauté et du bien-être, et nous vous offrons le meilleur des
+                      produits cosmétiques et parapharmaceutiques pour en profiter pleinement.</p>
+                    <a (click)="goToRegister()" style="cursor: pointer;" class="btn_3">Créer un compte</a>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+              <div class="login_part_form">
+                  <div class="login_part_form_iner">
+                    <h3>Bon retour ! <br>
+                      Veuillez vous connecter maintenant</h3>
+                      <div *ngIf="errorMessage" class="alert alert-danger text-center">
+                        {{ errorMessage }}
+                      </div>
+
+
+                      <form (ngSubmit)="login()" class="row contact_form" action="#" method="post" novalidate="novalidate">
+                          <div class="col-md-12 form-group p_star">
+                              <input type="text" class="form-control" id="name" name="name" value=""  [(ngModel)]="userLogin.username"
+                                  placeholder="Nom d'utilisateur ou Email">
+                          </div>
+                          <div class="col-md-12 form-group p_star">
+                              <input type="password" class="form-control" id="password" name="password" value=""  [(ngModel)]="userLogin.password"
+                                  placeholder="Mot de passe">
+                          </div>
+                          <div class="col-md-12 form-group">
+                              <div class="creat_account d-flex align-items-center">
+                                  <input type="checkbox" id="f-option" name="selector">
+                                  <label for="f-option">Se souvenir de moi</label>
+                              </div>
+                              <button type="submit" value="submit" class="btn_3" style="cursor: pointer;">
+                                Se connecter
+                              </button>
+                              <a class="lost_pass" routerLink="/forget-password">Mot de passe oublié ?</a>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<app-footer></app-footer>

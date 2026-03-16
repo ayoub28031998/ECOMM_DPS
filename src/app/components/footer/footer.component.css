@@ -1,0 +1,34 @@
+ul {
+  list-style: none; /* Supprime les puces */
+  padding: 0;
+}
+
+li {
+  display: flex; /* Utilise flexbox pour aligner les éléments */
+  align-items: center; /* Aligne verticalement l'icône et le texte */
+  margin-bottom: 10px; /* Espacement entre chaque élément */
+}
+
+.icon {
+  color: #aa0058;
+  margin-right: 8px; /* Ajoute de l'espace entre l'icône et le lien */
+  font-size: 18px; /* Ajuste la taille de l'icône si nécessaire */
+}
+
+.info-section li {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espace entre l'icône et le texte */
+  margin-bottom: 35px; /* Ajoute un espace entre chaque élément */
+}
+
+.info-section li:last-child {
+  margin-bottom: 0; /* Évite un espace en trop sous le dernier élément */
+}
+
+.info-section li i {
+  font-size: 18px;
+  color: #aa0058;
+}
+
+

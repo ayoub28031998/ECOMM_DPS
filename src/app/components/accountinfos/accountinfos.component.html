@@ -1,0 +1,140 @@
+<section class="banner_area">
+
+  <div class="slider-area ">
+    <!-- Mobile Menu -->
+    <div class="single-slider slider-height2 d-flex align-items-center justify-content-center" style="background-image: url('../../../assets/img/hero/area.png'); ">
+      <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="hero-cap text-center">
+                  <h2>Informations du compte</h2>
+                  <p>Gérez vos informations et paramètres de compte ici.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+  </div>
+</section>
+<div class="container">
+<div class="account-page">
+  <div class="left-column">
+    <div class="info-header">
+      <h2>Mes informations</h2>
+      <button class="logout-btn" (click)="logout()">Se déconnecter</button>
+    </div>
+    <div class="info-card">
+      <div class="info-row">
+        <i class="fa fa-user user-icon"></i>
+        <div class="info-details" *ngIf="userInfo">
+          <p><strong>Nom :</strong> {{ userInfo.prenom || 'Non spécifié' }}</p>
+          <p><strong>Prénom :</strong> {{ userInfo.nom || 'Non spécifié' }}</p>
+          <p><strong>Email :</strong> {{ userInfo.email || 'Non spécifié' }}</p>
+          <p><strong>Téléphone :</strong> {{ userInfo.telephone || 'Non spécifié' }}</p>
+          <p><strong>Date de naissance :</strong> {{ userInfo.date_naissance || 'Non spécifié' }}</p>
+
+          <!-- Bouton visible seulement en mobile -->
+          <button class="main_btn mobile-only" style="color:white" (click)="openModal()">Modifier les informations</button>
+        </div>
+      </div>
+
+      <!-- Bouton visible seulement en version bureau -->
+      <button class="btn-main desktop-only" (click)="openModal()">Modifier les informations</button>
+
+
+</div>
+
+    <div class="order-history">
+      <h2>Historique des commandes</h2>
+      <div *ngFor="let order of orders">
+        <div class="order-card">
+          <h3>Commande <span class="order-id">#{{ order.id }}</span></h3>
+          <p style="margin-bottom: 5px;">Prix total : {{ order.prix_total }}</p>
+          <p style="margin-bottom: 5px;">Statut : {{ getEtatById(order.status)?.libelle }}</p>
+
+          <button (click)="viewOrderDetails(order)" class="btn-main">Voir les détails</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Chronologie pour version bureau -->
+<div class="right-column desktop-only" *ngIf="selectedOrder">
+  <h2> Chronologie de la commande <span class="order-id">#{{ selectedOrder.id }}</span></h2>
+  <span class="close-timeline" (click)="closeTimeline()">&times;</span>
+
+  <p-timeline [value]="events" align="alternate" styleClass="customized-timeline">
+    <ng-template pTemplate="marker" let-event>
+      <span
+        class="flex w-2rem h-2rem align-items-center justify-content-center border-circle z-1 shadow-1"
+        [ngStyle]="{ 'color': event.color, 'margin-top': '20px' }"
+      >
+        <i [ngClass]="event.icon"></i>
+      </span>
+    </ng-template>
+
+    <ng-template pTemplate="content" let-event>
+      <p-card [header]="event.status" [subheader]="event.date"></p-card>
+    </ng-template>
+  </p-timeline>
+
+  <div class="cancel-btn-wrapper">
+    <button *ngIf="selectedOrder.status === 0" class="main_btn" style="color: black; background-color: #946b6f;" (click)="openCancelModal()">
+      Annuler commande
+    </button>
+  </div>
+</div>
+
+<!-- Modale de chronologie pour version mobile -->
+<div class="timeline-modal mobile-only" *ngIf="isTimelineModalOpen">
+  <div class="modal-content">
+    <span class="close-btn" (click)="closeTimelineModal()">&times;</span>
+    <h2>  <!-- FontAwesome -->
+
+      Chronologie de la commande <span class="order-id">#{{ selectedOrder.id }}</span></h2>
+    <p-timeline [value]="events" align="alternate" styleClass="customized-timeline">
+      <ng-template pTemplate="marker" let-event>
+        <span
+          class="flex w-2rem h-2rem align-items-center justify-content-center border-circle z-1 shadow-1"
+          [ngStyle]="{ 'color': event.color, 'margin-top': '20px' }"
+        >
+          <i [ngClass]="event.icon"></i>
+        </span>
+      </ng-template>
+      <ng-template pTemplate="content" let-event>
+        <p-card [header]="event.status" [subheader]="event.date"></p-card>
+        <br>
+      </ng-template>
+    </p-timeline>
+  </div>
+</div>
+
+  <div class="modal" *ngIf="isModalOpen">
+    <div class="modal-content">
+      <span class="close-btn" (click)="closeModal()">&times;</span>
+      <h2 style="font-size: 28px; font-weight: bold;">Modifier mes informations</h2>
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <label for="name">Nom :</label>
+        <input id="name" formControlName="nom" type="text"  [(ngModel)]="userInfo.nom" />
+
+        <label for="prenom">Prenom :</label>
+        <input id="prenom" formControlName="prenom" type="text" [(ngModel)]="userInfo.prenom" />
+
+        <label for="email">Email :</label>
+        <input id="email" formControlName="email" type="email" [(ngModel)]="userInfo.email" />
+
+        <label for="phone">Téléphone :</label>
+        <input id="phone" formControlName="phone" type="text" [(ngModel)]="userInfo.telephone"/>
+
+        <label for="phone">Date de naissance :</label>
+        <input id="phone" formControlName="date_naissance" type="date" [(ngModel)]="userInfo.date_naissance"/>
+
+
+      <button type="submit" class="save-btn">Enregistrer les modifications</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+<app-footer></app-footer>

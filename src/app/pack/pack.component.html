@@ -1,0 +1,242 @@
+<!--================Home Banner Area =================-->
+<div class="slider-area ">
+  <!-- Mobile Menu -->
+  <div class="single-slider slider-height2 d-flex align-items-center justify-content-center" style="background-image: url('../../../assets/img/hero/area.png'); ">
+    <div class="container">
+      <div class="row">
+          <div class="col-xl-12">
+              <div class="hero-cap text-center">
+                <h2>Packs</h2>
+        <p>Découvrez nos packs spécialement sélectionnés</p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+<!--================End Home Banner Area =================-->
+
+<!--================Category Product Area =================-->
+<section class="shop-area">
+  <div class="container">
+    <div class="row">
+      <!-- Sidebar: Filtres -->
+      <div class="col-lg-3">
+        <div class="filter-section">
+          <h3 class="filter-title">FILTRÉ PAR</h3>
+          <hr />
+
+
+
+          <!-- Filtres : Prix -->
+          <div class="filter-widget">
+            <h4>Prix</h4>
+            <div class="range-slider">
+              <input
+                type="range"
+                min="0"
+                max="500"
+                [(ngModel)]="minPrice"
+                id="minSlider"
+                (change)="onPriceChange()"
+              />
+              <input
+                type="range"
+                min="0"
+                max="500"
+                [(ngModel)]="maxPrice"
+                id="maxSlider"
+                (change)="onPriceChange()"
+              />
+            </div>
+            <div class="price-display">
+              <label>
+                {{ minPrice }} DT - {{ maxPrice }} DT
+              </label>
+            </div>
+
+          </div>
+          <hr />
+
+        </div>
+      </div>
+
+      <!-- Produits -->
+      <div class="col-lg-9">
+        <div class="products-header d-flex justify-content-between align-items-center">
+          <h2>Packs</h2>
+          <!-- <div class="sorting">
+            <label for="sort">Trier par :</label>
+            <select id="sort" (change)="sortProducts($event)">
+              <option value="name-asc">Nom, A à Z</option>
+              <option value="name-desc">Nom, Z à A</option>
+              <option value="price-asc">Prix croissant</option>
+              <option value="price-desc">Prix décroissant</option>
+            </select>
+          </div> -->
+        </div>
+
+        <div class="filters-active" *ngIf="activeFilters.length > 0">
+          <span class="filters-title">Filtres actifs :</span>
+          <div *ngFor="let filter of activeFilters" class="filter-tag">
+            {{ filter.label }}
+            <button class="remove-filter" (click)="removeFilter(filter)">×</button>
+          </div>
+          <button class="clear-filters" (click)="clearAllFilters()">Effacer Tout</button>
+        </div>
+
+        <!-- Liste des produits -->
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4"  *ngFor="let pack of filteredPacks">
+            <div class="product-card">
+
+              <div class="product-image">
+                <img
+                  [src]="pack.image || 'assets/img/no-image.png'"
+                  (click)="showDetails(pack)"
+                  style="cursor: pointer;"
+                  alt="{{ pack.libelle }}"
+                />
+              </div>
+              <div class="product-details text-center">
+                <h4 class="product-title" (click)="showDetails(pack)">{{ pack.libelle }}</h4>
+                <div class="product-price">
+                  <span *ngIf=" pack.promo !== 0" class="promo">{{  pack.prix }} DT</span>
+
+                  <span *ngIf=" pack.promo === 0">{{ pack.prix_ttc }} DT</span>
+                </div>
+                <div class="product-buttons">
+                  <a  class="btn-icon btn-eye" (click)="showDetails(pack)" style=" text-decoration: none;">
+                    <i class="ti-eye"></i>
+                  </a>
+                  <button  class="btn-main" (click)="addPackToCart(pack)">
+                    <i class="ti-shopping-cart" ></i> Commander
+                  </button>
+                  <a  class="btn-icon btn-heart">
+                    <i class="ti-heart"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!--================End Category Product Area =================-->
+
+<!-- Modal -->
+<p-dialog
+  header=""
+  [modal]="true"
+  [(visible)]="affichdetails"
+  [style]="{ width: '70rem' }"
+  [breakpoints]="{ '1199px': '80vw', '575px': '90vw' }"
+  [closable]="false"
+>
+  <!-- Bouton de fermeture -->
+  <button
+    type="button"
+    class="custom-close-btn"
+    (click)="affichdetails = false"
+  >
+    ×
+  </button>
+
+  <!-- Contenu de la fenêtre -->
+  <div class="row">
+    <div class="col-lg-6 text-center">
+      <!-- Badge de réduction -->
+      <div>
+      </div>
+      <!-- Image du produit -->
+      <img
+      class="img-fluid w-100"
+      [src]="selectedPack?.image"
+      alt="{{ selectedPack?.title }}"
+      />
+    </div>
+
+    <div class="col-lg-6">
+      <!-- Détails du produit -->
+      <div class="s_product_text">
+        <h3 style="cursor: pointer;"></h3>
+        <div class="mt-3">
+          <!-- Prix avec ou sans promo -->
+          <span
+
+            style="color: #aa0058; font-weight: 700; font-weight: bold;font-size:20px"
+          > {{  selectedPack?.prix }} DT
+          </span>
+
+        </div>
+
+        <!-- Informations supplémentaires -->
+
+        <h4>Articles du pack :</h4>
+        <ul class="list">
+          <li *ngFor="let article of selectedPack?.lignes_pack">
+            <div class="d-flex align-items-center mb-2">
+              <!-- Image de l'article -->
+              <img [src]="getArticleById(article.id_article)?.images[0].data" alt="{{ getArticleById(article.id_article)?.libelle }}"
+                   class="article-img mr-3" style="width: 50px; height: 50px;" />
+              <!-- Libellé de l'article -->
+              <span>{{ getArticleById(article.id_article)?.libelle }}</span>
+            </div>
+          </li>
+        </ul>
+        <p></p>
+
+        <!-- Gestion de la quantité -->
+        <div class="product_count">
+          <span class="label" style="font-weight: bold;" for="qty">Quantité:</span>
+          <button
+            (click)="decreaseQuantity()"
+            class="reduced items-count"
+            type="button"
+            [disabled]="quantity <= 1"
+          >
+            <i class="la la-chevron-down"></i>
+          </button>
+          <input
+            type="text"
+            name="qty"
+            id="sst"
+            [(ngModel)]="quantity"
+            min="1"
+            maxlength="12"
+            title="Quantity:"
+            class="input-text qty"
+          />
+          <button
+            (click)="increaseQuantity()"
+            class="increase items-count"
+            type="button"
+          >
+            <i class="la la-chevron-up"></i>
+          </button>
+        </div>
+
+        <!-- Boutons d'action -->
+        <div class="product-buttons">
+          <button class="btn-main" (click)="addPackToCart(selectedPack)">
+            <i class="ti-shopping-cart"></i> Ajouter au panier
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+
+<app-footer></app-footer>

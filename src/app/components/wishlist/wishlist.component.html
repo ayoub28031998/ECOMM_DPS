@@ -1,0 +1,344 @@
+<div class="slider-area ">
+  <!-- Mobile Menu -->
+  <div class="single-slider slider-height2 d-flex align-items-center justify-content-center" style="background-image: url('../../../assets/img/hero/area.png'); ">
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-12">
+                  <div class="hero-cap text-center">
+                      <h2>Liste des favoris</h2>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- slider Area End-->
+
+<!-- product list part start-->
+<section class="product_list section_padding">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-4">
+              <div class="product_sidebar">
+                <div class="single_sedebar">
+                  <form  >
+                    <input
+                      type="text"
+                      name="searchKeyword"
+                      [(ngModel)]="searchKeyword"
+                      (input)="filterItems()"
+                      placeholder="Recherche..."
+                    />
+                    <i class="ti-search"></i>
+                  </form>
+                </div>
+
+
+                <div class="single_sedebar">
+                  <div class="select_option">
+                    <div
+                      class="select_option_list"
+                      (click)="toggleDropdown()"> <!-- Ajout de (click) pour basculer -->
+                      Categorie <i class="right fas fa-caret-down"></i>
+                    </div>
+                    <div
+                      class="select_option_dropdown"
+                      [class.open]="dropdownOpen"> <!-- Ajout d'une classe conditionnelle -->
+                      <p *ngFor="let category of categories">
+                        <a href="#" (click)="filterByCategory(category.libelle)">{{ category.libelle }}</a>
+                      </p>
+                      <p>
+                        <a href="#" (click)="filterByCategory('')">Toutes les catégories</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                  <!-- <div class="single_sedebar">
+                      <div class="select_option">
+                          <div class="select_option_list">Type <i class="right fas fa-caret-down"></i> </div>
+                          <div class="select_option_dropdown">
+                              <p><a href="#">Type 1</a></p>
+                              <p><a href="#">Type 2</a></p>
+                              <p><a href="#">Type 3</a></p>
+                              <p><a href="#">Type 4</a></p>
+                          </div>
+                      </div>
+                  </div>-->
+              </div>
+          </div>
+          <div class="col-md-8">
+
+                  <!-- <div class="row">
+                    <div class="col-6 col-sm-4  product-card" *ngFor="let item of wishlistItems">
+                      <div class="product-default">
+                        <figure>
+                          <a [routerLink]="['/Singleproduct', item.id]">
+                            <img src="{{item.images[0]?.data}}" class="product-image" alt="product" />
+                            <img src="{{item.images[1]?.data}}" class="product-image" alt="product" *ngIf="item.images.length > 1"/>
+                          </a>
+                        </figure>
+                        <div class="product-details">
+                          <h3 class="product-title">
+                            <a [routerLink]="['/singleproduct', item.id]" class="product-link">{{ item.libelle }}</a>
+                          </h3>
+                          <div class="price-box">
+                            <span class="product-price">${{ item.prix_ttc }}</span>
+                          </div>
+                          <div class="product-action">
+                            <button (click)="openModal(item.id)" class="btn-icon btn-remove-wishlist" title="Remove from Wishlist">
+                              <i class="fas fa-trash"></i>
+                            </button>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div> -->
+
+
+                  <div  class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 col-sm-6 mb-4"  *ngFor="let item of displayedItems">
+
+                      <div class="product-card">
+                        <!-- Badge Promo -->
+                        <div *ngIf="item.promo !== 0" class="badge-promo">
+                          -{{ ((1 - item.prix_final / item.prix_ttc) * 100) | number:'1.0-0' }}%
+                        </div>
+
+                        <!-- Image Produit -->
+                        <div class="product-image">
+                          <img class="img-fluid" [src]="item.images[0]?.data" (click)="goToProduct(item.id, item.libelle)" style="cursor: pointer;" alt="{{ item.libelle }}" />
+                        </div>
+
+                        <!-- Détails Produit -->
+                        <div class="product-details text-center">
+                          <h4 class="product-title" (click)="goToProduct(item.id, item.libelle)" >
+                            {{ item.libelle }}
+                          </h4>
+                          <div class="product-price">
+                            <span *ngIf="item.promo !== 0" class="price">{{ item.prix_final }} DT</span>
+                            <del *ngIf="item.promo !== 0">{{ item.prix_ttc }} DT</del>
+                            <span *ngIf="item.promo === 0" class="price">{{ item.prix_ttc }} DT</span>
+                          </div>
+                          <div class="button-container">
+                            <a (click)="showDetails(item)" class="btn-icon btn-eye" style="cursor: pointer;"  title="Voir les détails">
+                              <i class="ti-eye"></i>
+                            </a>
+                            <button class="add-to-cart-btn" (click)="addToCart(item)">
+                              Commander
+                            </button>
+                            <a  (click)="openModal(item.id)"
+                            class="btn-icon btn-remove-wishlist"
+                            title="Supprimer de la liste de favoris">
+                            <i class="ti-trash"></i>
+                            </a>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="load_more_btn text-center" style="cursor: pointer;" *ngIf="displayedItems.length < wishlistItems.length">
+                    <a (click)="loadMore()" class="btn_3">Load More</a>
+                  </div>
+
+          </div>
+      </div>
+  </div>
+</section>
+<div id="deleteModal" class="modal" *ngIf="isModalOpen">
+  <div class="modal-content">
+    <span class="close-btn" (click)="closeModal()">&times;</span>
+    <h2>Confirmation</h2>
+    <p>Êtes-vous sûr de vouloir supprimer cet article de votre liste de souhaits ?</p>
+    <div class="modal-buttons">
+      <button class="confirm-btn" (click)="confirmRemove()">Oui, supprimer</button>
+      <button class="cancel-btn" (click)="closeModal()">Annuler</button>
+    </div>
+  </div>
+</div>
+<div class="shop-method-area section-padding30">
+  <div class="container">
+      <div class="row d-flex justify-content-between">
+          <div class="col-xl-3 col-lg-3 col-md-6">
+              <div class="single-method mb-40">
+                  <i style="color:#aa0058" class="ti-package"></i>
+                  <h6>Livraison Rapide</h6>
+                  <p>Expédition rapide partout en Tunisie.</p>
+              </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-6">
+              <div class="single-method mb-40">
+                  <i style="color:#aa0058" class="ti-unlock"></i>
+                  <h6>Produits de Qualité</h6>
+                  <p>Une sélection pour tous vos besoins.</p>
+              </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-6">
+              <div class="single-method mb-40">
+                  <i style="color:#aa0058" class="ti-reload"></i>
+                  <h6>Support Client 24/7</h6>
+                  <p>Nous répondons à toutes vos question.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Shop Method End-->
+
+
+<!-- <section class="subscribe_part section_padding">
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-lg-8">
+              <div class="subscribe_part_content">
+                  <h2>Get promotions & updates!</h2>
+                  <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources credibly innovate granular internal .</p>
+                  <div class="subscribe_form">
+                      <input type="email" placeholder="Enter your mail">
+                      <a href="#" class="btn_1">Subscribe</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section> -->
+
+<p-dialog
+  header=""
+  [modal]="true"
+  [(visible)]="affichdetails"
+  [style]="{ width: '70rem' }"
+  [breakpoints]="{ '1199px': '80vw', '575px': '90vw' }"
+  [closable]="false"
+>
+  <!-- Bouton de fermeture -->
+  <button
+    type="button"
+    class="custom-close-btn"
+    (click)="affichdetails = false"
+  >
+    ×
+  </button>
+
+  <!-- Contenu de la fenêtre -->
+  <div class="row">
+    <div class="col-lg-6 text-center">
+      <!-- Badge de réduction -->
+      <div *ngIf="selectedArticle?.promo !== 0" class="discount-badge">
+        -{{ ((1 - selectedArticle?.prix_final / selectedArticle?.prix_ttc) * 100) | number:'1.0-0' }}%
+      </div>
+      <!-- Image du produit -->
+      <img
+        class="img-fluid w-100"
+        [src]="selectedArticle?.images[0].data"
+        alt="{{ selectedArticle?.title }}"
+      />
+    </div>
+
+    <div class="col-lg-6">
+      <!-- Détails du produit -->
+      <div class="s_product_text">
+        <h3 style="cursor: pointer;">{{ selectedArticle?.libelle }}</h3>
+        <div class="mt-3">
+          <!-- Prix avec ou sans promo -->
+          <span
+            *ngIf="selectedArticle?.promo !== 0"
+            style="color: #aa0058; font-weight: 500;"
+          >
+            {{ selectedArticle?.prix_final }} DT
+          </span>
+          <del *ngIf="selectedArticle?.promo !== 0">
+            {{ selectedArticle?.prix_ttc }} DT
+          </del>
+          <span
+            *ngIf="selectedArticle?.promo === 0"
+            style="color: #aa0058; font-weight: 500;"
+          >
+            {{ selectedArticle?.prix_ttc }} DT
+          </span>
+        </div>
+
+        <!-- Informations supplémentaires -->
+        <ul class="list">
+          <li>
+            <span class="label">Référence:</span>
+            {{ selectedArticle?.reference || 'Non spécifié' }}
+          </li>
+          <li>
+            <span class="label">Catégorie:</span>
+            {{ selectedArticle?.category?.libelle || 'Non spécifié' }}
+          </li>
+          <li>
+            <span class="label">Sous-catégorie:</span>
+            {{ selectedArticle?.sous_category?.libelle || 'Non spécifié' }}
+          </li>
+          <li>
+            <span class="label">Disponibilité:</span>
+            <span
+              [ngClass]="selectedArticle?.stock > 0 ? 'in-stock' : 'out-of-stock'"
+            >
+              {{ selectedArticle?.stock > 0 ? 'En stock' : 'Stock Épuisé' }}
+            </span>
+          </li>
+        </ul>
+
+        <p>{{ selectedArticle?.description || 'Aucune description disponible' }}</p>
+
+        <!-- Gestion de la quantité -->
+        <div class="product_count">
+          <span class="label" style="font-weight: bold;" for="qty">Quantité:</span>
+          <button
+            (click)="decreaseQuantity()"
+            class="reduced items-count"
+            type="button"
+            [disabled]="quantity <= 1"
+          >
+            <i class="la la-chevron-down"></i>
+          </button>
+          <input
+            type="text"
+            name="qty"
+            id="sst"
+            [(ngModel)]="quantity"
+            min="1"
+            maxlength="12"
+            title="Quantity:"
+            class="input-text qty"
+          />
+          <button
+            (click)="increaseQuantity()"
+            class="increase items-count"
+            type="button"
+          >
+            <i class="la la-chevron-up"></i>
+          </button>
+        </div>
+
+        <!-- Boutons d'action -->
+        <div class="product-buttons">
+          <button class="btn-main" (click)="addToCart(selectedArticle)">
+            <i class="ti-shopping-cart"></i> Ajouter au panier
+          </button>
+          <button
+            class="btn-main"
+            (click)="goToProduct(selectedArticle.id, selectedArticle.libelle)"
+          >
+            Voir plus de détails
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+
+
+<app-footer></app-footer>

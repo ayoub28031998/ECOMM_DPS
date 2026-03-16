@@ -1,0 +1,451 @@
+@media (max-width: 576px) {
+  .product-image img {
+    max-height: 150px; /* Hauteur ajustée pour mobile */
+  }
+
+  .product-card {
+    padding: 10px; /* Réduction de l'espace intérieur */
+  }
+
+  .button-container {
+
+    gap: 8px;
+  }
+}
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Fixe la hauteur de la carte */
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 10px;
+}
+.badge-promo {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  background-color: #ff3f3f;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 8px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+.product-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Garde les proportions et coupe l'excès */
+}
+.product-image img {
+  width: 100%; /* S'adapte à la largeur du conteneur */
+  height: auto; /* Garde le ratio de l'image */
+  object-fit: contain; /* Empêche l'image d'être coupée */
+  max-height: 180px; /* Ajustez la hauteur maximale pour le mobile */
+  display: block; /* Évite les espaces blancs autour de l'image */
+  margin: 0 auto; /* Centre l'image horizontalement */
+}
+.product-image {
+  height: 180px; /* Fixe la hauteur de l'image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Maintient l'image centrée et proportionnelle */
+}
+  .img-fluid {
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+.product-title {
+  font-weight: bold;
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 10px;
+  font-family: emoji;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  line-height: 1.2;
+  height: 40px; /* Fixe la hauteur pour 2 lignes */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limite à 2 lignes */
+  -webkit-box-orient: vertical;
+}
+
+.product-title:hover {
+  color: #aa0058;
+
+}
+.product-details {
+  padding: 10px;
+  margin-top: 10px;
+}
+.product-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Occupe tout l'espace restant */
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 10px;
+}
+.product-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 10px;
+}
+.product-price {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.product-price {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #9b1c74;
+  font-weight: bold;
+}
+.price {
+  color: #9b1c74;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+del {
+  color: #aaa;
+  margin-left: 5px;
+  font-size: 14px;
+}
+.button-container {
+  display: flex;
+  justify-content: center; /* Centre les éléments horizontalement */
+  align-items: center;     /* Aligne verticalement les éléments */
+  gap: 8px;                /* Espacement entre les boutons */
+        /* Permet aux éléments de se positionner sur plusieurs lignes si nécessaire */
+}
+
+.button-container button,
+.button-container a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 40px;        /* Hauteur minimale uniforme */
+  padding: 8px 12px;       /* Espacement interne */
+  box-sizing: border-box;  /* Inclut padding et bordure dans la hauteur */
+  border: 1px solid #9b1c74; /* Assurez-vous que toutes les bordures sont identiques */
+  border-radius: 5px;
+}
+
+.add-to-cart-btn {
+  flex: 1;                 /* Fait en sorte que le bouton "Ajouter au panier" prenne plus d'espace */
+  font-weight: bold;
+  font-size: 12px;
+  background-color: #fff;
+  color: #9b1c74;
+}
+
+.btn-icon {
+  width: 40px;             /* Largeur uniforme pour les icônes */
+  height: 40px;            /* Hauteur uniforme pour les icônes */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px solid #9b1c74;
+}
+
+.btn-icon:hover {
+  background-color: #9b1c74;
+  color: #fff; /* Couleur blanche au survol */
+}
+
+.add-to-cart-btn {
+  display: inline-block;
+  background-color: #fff;
+  color: #9b1c74;
+  padding: 8px 12px;
+  border: 1px solid #9b1c74; /* Ajout d'une bordure */
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #9b1c74;
+  color: #fff; /* Texte blanc au survol */
+}
+
+@media (max-width: 576px) {
+  .button-container {
+    flex-wrap: nowrap; /* Empêche le retour à la ligne */
+    gap: 5px; /* Réduction de l'espacement */
+  }
+
+  .add-to-cart-btn {
+    font-size: 10px; /* Ajuste la taille du texte */
+    padding: 6px 8px;
+  }
+}
+ .price {
+      color: #aa0058;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .modal-dialog {
+      max-width: 900px;
+      margin: auto;
+    }
+    .modal-content {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-body {
+
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .custom-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      z-index: 1000; /* Assurez-vous que le bouton est bien au-dessus du contenu */
+    }
+
+    .custom-close-btn:hover {
+      color: #aa0058; /* Changement de couleur au survol */
+    }
+   .s_product_text h3 {
+      font-size: 24px;
+      color: #333;
+      font-weight: 600;
+    }
+   ul.list {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul.list li {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #666;
+    }
+   ul.list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.list li {
+      display: flex; /* Permet d'aligner les éléments sur une ligne */
+      justify-content: flex-start; /* Les labels et les valeurs sont alignés à gauche */
+      margin-bottom: 8px; /* Ajoute un espacement entre les lignes */
+    }
+
+    ul.list .label {
+      font-weight: bold; /* Rend les labels plus visibles */
+      margin-right: 10px; /* Ajoute un espace entre le label et la valeur */
+      width: 150px; /* Optionnel : Fixe une largeur pour aligner les labels */
+    }
+    .product_count {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 5px;
+      margin-top: 10px;
+    }
+
+    .product_count input.qty {
+      width: 60px;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      height: 40px;
+      font-size: 16px;
+    }
+
+    .product_count button.items-count {
+      width: 40px;
+      height: 40px;
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .product_count button.items-count i {
+      font-size: 16px;
+      color: #333;
+    }
+
+    .product_count button.items-count:hover {
+      background: #ddd;
+    }
+
+    .product_count button.items-count:disabled {
+      background: #eee;
+      cursor: not-allowed;
+    }
+    .product-buttons .btn-main {
+      background-color: #aa0058;
+      color: #fff;
+      padding: 10px 15px; /* Ajustement du padding du bouton principal */
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+      margin: 0; /* Supprime les marges par défaut */
+    }
+
+    .product-buttons .btn-main:hover {
+      background-color: #fff;
+      color:#aa0058;
+      border : 1px solid #aa0058;
+      transform: scale(1.05);
+    }
+    .product-buttons {
+      display: flex;
+      justify-content: center; /* Centrer tous les boutons horizontalement */
+      align-items: center; /* Alignement vertical */
+      gap: 10px; /* Réduction de l'espace entre les boutons */
+      margin-top: 10px; /* Réduction de l'espace au-dessus des boutons */
+    }
+    .discount-badge {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      background-color: red;
+      color: white;
+      padding: 5px 10px;
+      font-size: 0.9em;
+      font-weight: bold;
+      border-radius: 3px;
+      }
+      .in-stock {
+        color: green;
+        font-weight: bold;
+      }
+
+      .out-of-stock {
+        color: red;
+        font-weight: bold;
+      }
+      .btn-remove-wishlist {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: #f44336;
+        font-size: 18px;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      .btn-remove-wishlist:hover {
+        color: #ff6b6b;
+        transform: scale(1.1); /* Légère augmentation au survol */
+      }
+      .modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      /* Conteneur des boutons pour les espacer */
+      .modal-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        width: 840px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+      }
+
+      /* Conteneur des boutons */
+      .modal-buttons {
+        display: flex;
+        justify-content: space-between; /* Espace égal entre les boutons */
+        margin-top: 20px; /* Espace au-dessus des boutons */
+      }
+
+      /* Style des boutons */
+      .confirm-btn, .cancel-btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+        width: 48%; /* Largeur pour chaque bouton, ajustable si besoin */
+      }
+
+      .confirm-btn {
+        background-color: #946b6f;
+        color: white;
+      }
+
+      .cancel-btn {
+        background-color:  #b0b0b0;
+        color: white;
+      }
+
+      .confirm-btn:hover {
+        background-color: #946b6f;
+      }
+
+      .cancel-btn:hover {
+        background-color: #b0b0b0;
+      }
+      /* Croix de fermeture */
+      .close-btn {
+        position: absolute; /* Permet de positionner la croix indépendamment du flux du texte */
+        top: 10px;
+        right: 15px; /* Distance depuis le bord droit */
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .close-btn:hover {
+        color: #946b6f;
+      }
+      .select_option_dropdown {
+        display: none; /* Masqué par défaut */
+      }
+
+      .select_option_dropdown.open {
+        display: block; /* Affiché lorsqu'il est ouvert */
+      }
+
+      .select_option_list {
+        cursor: pointer; /* Ajoutez un curseur pour indiquer que c'est cliquable */
+      }

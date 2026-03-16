@@ -1,0 +1,287 @@
+<div class="slider-area ">
+  <!-- Menu Mobile -->
+  <div class="single-slider slider-height2 d-flex align-items-center justify-content-center" style="background-image: url('../../../assets/img/hero/area.png');">
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-12">
+                  <div class="hero-cap text-center">
+                      <h2>Finaliser la commande</h2>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Fin de la zone Slider -->
+
+<!--================Zone Checkout =================-->
+
+<section   class="checkout_area section_padding">
+  <div class="container">
+
+    <div class="returning_customer" *ngIf="!isLoggedIn()">
+      <div class="check_title">
+        <h2>
+        Si vous êtes un nouveau client,
+          <a (click)="goToRegister()" style="cursor: pointer;color: #aa0058">cliquez ici pour créer un compte</a>
+        </h2>
+      </div>
+      <p>
+        Si vous avez déjà effectué un achat chez nous, veuillez entrer vos informations ci-dessous pour passez à la section Facturation et Livraison.
+      </p>
+      <form (ngSubmit)="login()" class="row contact_form" action="#" method="post" novalidate="novalidate">
+        <div class="col-md-6 form-group p_star">
+          <input type="text" class="form-control" id="name" name="name" value=""  [(ngModel)]="userLogin.username" placeholder="Nom d'utilisateur ou Email"
+          >
+
+        </div>
+        <div class="col-md-6 form-group p_star">
+          <input type="password" class="form-control" id="password" name="password" value="" [(ngModel)]="userLogin.password" placeholder="Mot de passe"/>
+
+        </div>
+        <div class="col-md-12 form-group">
+          <button type="submit" value="submit" style="cursor: pointer;" class="btn_3">
+            Se connecter
+          </button>
+          <!-- <div class="creat_account">
+            <input type="checkbox" id="f-option" name="selector" />
+            <label for="f-option">Se souvenir de moi</label>
+          </div> -->
+          <a class="lost_pass" routerLink="/forget-password">Mot de passe oublié ?</a>
+        </div>
+      </form>
+    </div>
+    <div class="cupon_area">
+      <div class="check_title">
+        <h2>
+          Avez-vous un code promo ?
+          <a>Cliquez ici pour entrer votre code</a>
+        </h2>
+      </div>
+      <div class="coupon-container">
+        <input type="text" [(ngModel)]="couponCode" placeholder="Entrez le code promo" />
+        <a class="btn_1" (click)="fetchCouponValue()">Appliquer le code</a>
+      </div>
+
+      <div *ngIf="errorMessage" class="error-message">
+        <p style="color: red;">{{ errorMessage }}</p>
+      </div>
+
+      <!-- Message de succès -->
+      <div *ngIf="couponValue" class="success-message">
+        <p style="color:#aa0058;">Code promo appliqué : {{ couponValue }}% de réduction</p>
+      </div>
+    </div>
+    <div >
+    <div class="billing_details">
+      <div class="row">
+        <div class="col-lg-8">
+          <h3>Détails de facturation</h3>
+          <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+            <div class="col-md-6 form-group p_star">
+              <input type="text" class="form-control" id="first" name="prenom"
+                [(ngModel)]="user.prenom" placeholder="Prénom" (input)="updateError('prenom')"/>
+              <p *ngIf="errors['prenom']" class="error-message" style="color: red;">
+                {{ errors['prenom'] }}
+              </p>
+            </div>
+
+            <!-- Nom de famille -->
+            <div class="col-md-6 form-group p_star">
+              <input type="text" class="form-control" id="last" name="name"
+                [(ngModel)]="user.nom" placeholder="Nom de famille" (input)="updateError('nom')"/>
+              <p *ngIf="errors['nom']" class="error-message" style="color: red;">
+                {{ errors['nom'] }}
+              </p>
+            </div>
+            <div class="col-md-6 form-group p_star">
+              <input type="text" class="form-control" id="number" name="number"
+                [(ngModel)]="user.telephone" placeholder="Numéro de téléphone" (input)="updateError('telephone')"/>
+              <p *ngIf="errors['telephone']" class="error-message" style="color: red;">
+                {{ errors['telephone'] }}
+              </p>
+            </div>
+
+            <!-- Adresse e-mail -->
+            <div class="col-md-6 form-group p_star">
+              <input type="text" class="form-control" id="email" name="compemailany"
+                [(ngModel)]="user.email" placeholder="Adresse e-mail" (input)="updateError('email')"/>
+              <p *ngIf="errors['email']" class="error-message" style="color: red;">
+                {{ errors['email'] }}
+              </p>
+            </div>
+
+            <div class="col-md-12 form-group p_star">
+              <input type="text" class="form-control" id="address" name="address"
+ [(ngModel)]="user.address" placeholder="Adresse" (input)="onAddressChange($event); updateError('address')"/>
+<p *ngIf="errors['address']" class="error-message" style="color: red;">
+  {{ errors['address'] }}
+</p>
+            </div>
+            <div class="col-md-12 form-group p_star">
+              <input type="text" class="form-control" id="city" name="city"
+              [(ngModel)]="user.city" placeholder="Ville" (input)="onCityChange($event); updateError('city')"/>
+             <p *ngIf="errors['city']" class="error-message" style="color: red;">
+               {{ errors['city'] }}
+             </p>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <div class="creat_account">
+                <h3>Détails de livraison</h3>
+                <input type="checkbox" id="f-option3" name="selector" />
+                <label for="f-option3">Livrer à une adresse différente ?</label>
+              </div>
+              <textarea class="form-control" name="message" id="message" rows="1" [(ngModel)]="user.orderNotes"
+                placeholder="Notes de commande"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-4">
+          <div class="order_box">
+            <h2>Votre commande</h2>
+            <ul class="list">
+              <li *ngFor="let item of cartItems">
+                <a class="truncate">
+                  <span class="libelle">
+                    {{ item.libelle.length > 23 ? (item.libelle | slice:0:23) + '...' : item.libelle }}
+                  </span>
+                  <span class="quantity">x {{ item.quantity }}</span>
+                  <span class="last">
+                    {{ ((item.promo !== 0 ? (item.prix_final || item.prix) : (item.prix_ttc || item.prix)) * item.quantity) | number:'1.3-3' }} DT
+                  </span>
+                </a>
+              </li>
+
+
+
+
+            </ul>
+            <ul class="list list_2">
+              <li>
+                <a >Sous-total
+                  <span>{{ subtotal | number:'1.3-3' }} DT</span>
+                </a>
+              </li>
+              <li>
+                <a>Livraison
+                  <span *ngIf="getShippingCost() === 0">Livraison gratuite</span>
+                  <span *ngIf="getShippingCost() > 0">Tarif unique : {{ getShippingCost() | number:'1.3-3' }} DT</span>
+                </a>
+              </li>
+              <li>
+                <a>Total
+                  <span>{{ getTotalWithShipping() | number:'1.3-3' }} DT</span>
+                </a>
+              </li>
+            </ul>
+            <div class="payment_item">
+              <div class="radion_btn">
+                <input type="radio" id="f-option5" name="selector" value="cheque" [(ngModel)]="selectedPaymentMethod"/>
+                <label for="f-option5">Payer par chèque</label>
+                <div class="check"></div>
+              </div>
+              <p>
+                Veuillez envoyer un chèque à Nom du magasin, Rue du magasin, Ville du magasin, État / Département du magasin, Code postal du magasin.
+              </p>
+            </div>
+            <div class="payment_item active">
+              <div class="radion_btn">
+                <input type="radio" id="f-option6" name="selector" value="cash" [(ngModel)]="selectedPaymentMethod" />
+                <label for="f-option6">Paiement en espèces </label>
+                <img src="img/product/single-product/card.jpg" alt="" />
+                <div class="check"></div>
+              </div>
+
+            </div>
+            <!-- <div class="creat_account">
+              <input type="checkbox" id="f-option4" name="selector" />
+              <label for="f-option4">J'ai lu et j'accepte les </label>
+              <a href="#">termes et conditions*</a>
+            </div> -->
+            <div id="modalOverlay" class="modal-overlay" *ngIf="isModalOpen"></div>
+            <div id="confirmationModal" class="modal" >
+              <div class="custom-modal-content">
+                <span class="custom-close" (click)="closeModal('confirmationModal')">&times;</span>
+                <h2 style="color:#aa0058;  font-weight: bold" >Résumé de la commande</h2>
+
+
+                  <table class="order-table">
+                    <thead>
+                      <tr>
+                        <th>Description</th>
+                        <th>Prix</th>
+                        <th>Qté</th>
+                        <th>Montant</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of commandeObject.ligneCommande">
+                        <td>{{ item.libelle }}</td>
+
+                        <td>{{ item.prix_ttc_article | number:'1.3-3'    }}</td>
+                        <td>{{ item.nbr_article }}</td>
+                        <td>{{ item.nbr_article * item.prix_ttc_article |  number:'1.3-3' }}</td>
+                      </tr>
+                      <tr *ngFor="let pack of commandeObject.ligneCommandePack">
+                        <td>{{ pack.libelle}}</td>
+                        <td>{{ pack.prix_ttc_pack | number:'1.3-3' }}</td>
+                        <td>{{ pack.nbr_pack }}</td>
+                        <td>{{ pack.nbr_pack * pack?.prix_ttc_pack | number:'1.3-3' }}</td>
+                    </tr>
+
+                    </tbody>
+                  </table>
+
+
+
+                <!-- Order Summary -->
+                <div class="order-summary">
+                  <p><strong>Sous-total :</strong> {{ subtotal |  number:'1.3-3' }} DT</p>
+                  <p>
+                    <strong>Livraison :</strong>
+                    <span *ngIf="getShippingCost() === 0">Livraison gratuite</span>
+                    <span *ngIf="getShippingCost() > 0">{{ getShippingCost() | number:'1.3-3' }} DT</span>
+                  </p>
+
+                  <p><strong>Total :</strong> {{ getTotalWithShipping() |  number:'1.3-3' }} DT</p>
+                </div>
+
+                <!-- Question de confirmation -->
+                <p>Voulez-vous confirmer cette commande ?</p>
+                <div class="modal-actions">
+                  <button class="btn-confirm" (click)="confirmOrder()">Confirmer</button>
+                  <button class="btn-cancel" (click)="closeModal('confirmationModal')">Annuler</button>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Success modal -->
+            <div id="successModal" class="modal">
+              <div class="custom-modal-content">
+
+                <p>  <i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 10px;"></i>
+                  Commande passée avec succès !</p>
+                  <a *ngIf="isLoggedIn()" [routerLink]="'/accountinfos'" style="color: #4CAF50; text-decoration: underline; font-weight: bold; font-size: 18px;">
+                    Aller à l'historique des commandes
+                  </a>
+
+              </div>
+            </div>
+            <div *ngIf="showGlobalError" class="alert alert-danger" style="margin-bottom: 15px;">
+              ⚠️ Veuillez vérifier les champs du formulaire avant de passer la commande.
+            </div>
+            <button class="btn_3" style="cursor: pointer;" (click)="placeOrder()">Passer la commande</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</section>
+
+
+<!--================Fin Zone Checkout =================-->
+<app-footer></app-footer>

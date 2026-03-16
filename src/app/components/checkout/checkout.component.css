@@ -1,0 +1,316 @@
+/* Modale de confirmation et de succès */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Gris avec transparence */
+  z-index: 1000;
+}
+
+/* Contenu de la modale */
+.custom-modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 600px;
+  z-index: 1001;
+}
+
+.custom-modal-content p {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
+
+}
+
+/* Bouton Fermer */
+.custom-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #555;
+}
+
+/* Boutons */
+.custom-modal-content button {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 10px;
+}
+.custom-modal-content button:not(:last-of-type) {
+  margin-right: 10px; /* Adds space only between buttons, not after the last button */
+}
+
+/* Bouton OK */
+.custom-modal-content button:first-of-type {
+  background-color: #aa0058;
+  color: white;
+}
+
+.custom-modal-content button:first-of-type:hover {
+  background-color: #830747;
+}
+
+/* Bouton Annuler */
+.custom-modal-content button:last-of-type {
+  background-color: #b0b0b0;
+  color: white;
+}
+
+.custom-modal-content button:last-of-type:hover {
+  background-color: #888787;
+}
+
+.place-order-btn {
+  background-color: #C686AE; /* Couleur de fond */
+  color: black; /* Changer la couleur du texte en noir */
+  width: 100%; /* Faire en sorte que le bouton prenne toute la largeur du conteneur */
+  padding: 15px; /* Ajouter du padding pour rendre le bouton plus grand */
+  font-size: 16px; /* Taille de police ajustée */
+
+ /* background: #946b6f; */
+padding: 0px 32px;
+letter-spacing: 0.25px;
+
+font-family: "Roboto", sans-serif;
+font-size: 12px;
+font-weight: 500;
+line-height: 44px;
+outline: none !important;
+box-shadow: none !important;
+text-align: center;
+border: 1px solid #4a195a;
+cursor: pointer;
+text-transform: uppercase;
+transition: all 300ms linear 0s;
+border-radius: 5px
+}
+
+.place-order-btn:hover {
+  background-color: #fff; /* Changer la couleur lors du survol */
+}
+
+.shipping-option label {
+  margin-left: 10px; /* Ajuste la distance entre le radio et le texte */
+}
+.payment-option label {
+  margin-left: 10px; /* Distance entre le bouton radio et le texte */
+}
+.shipping-method h4, .payment-method h4 {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.shipping-method h4 i, .payment-method h4 i {
+  margin-right: 10px; /* Ajuste l'espace entre l'icône et le texte */
+}
+.shipping-method h4 i {
+  transform: scaleX(-1); /* Inverse l'icône horizontalement */
+}
+
+/* Table for ordered items */
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.order-table th, .order-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.order-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+/* Order Summary on the right */
+.order-summary {
+  text-align: right;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.order-summary p {
+  margin: 5px 0;
+}
+
+.order-summary p strong {
+  margin-right: 10px;
+}
+
+/* Overall modal design */
+.custom-modal-content {
+  padding: 30px;
+}
+
+.custom-close {
+  font-size: 24px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+/* Modal actions */
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-confirm {
+  background-color: #946b6f;
+  color: white;
+}
+
+.btn-cancel {
+  background-color: #f0f0f0;
+  color: #333;
+}
+.custom-close:hover {
+  color: #946b6f;
+}
+
+.coupon-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacement entre l'input et le bouton */
+}
+
+.coupon-container input[type="text"] {
+  flex: 1; /* Permet à l'input de prendre tout l'espace disponible */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.coupon-container .btn_1 {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #aa0058;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.coupon-container .btn_1:hover {
+  border: 1px solid #d0579e;
+  background-color: #fff;
+  color: #d0579e;
+}
+
+.not-loggedin-container {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff5f7;
+  border: 1px solid #f069b4;
+  margin-bottom: -150px;
+}
+
+.message-box {
+  text-align: center;
+}
+
+.message-box .icon {
+  font-size: 40px;
+  color: #f069b4;
+}
+
+.message-box h3 {
+  color: #333;
+  font-size: 22px;
+}
+
+.message-box p {
+  color: #666;
+}
+
+.btn-login {
+  display: inline-block;
+  background-color: #f069b4;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-login:hover {
+  background-color: #d0579e;
+}
+.error-message {
+  color: red;
+  font-size: 14px;
+
+}
+
+
+.success-message {
+  color: green;
+  font-size: 14px;
+
+}
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.truncate {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.libelle {
+  flex: 1; /* Prend tout l'espace disponible */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  order: 1; /* Met le libellé en premier */
+}
+
+.quantity {
+  flex-shrink: 0;
+  margin-left: 8px;
+  order: 2; /* La quantité après le libellé */
+}
+
+.last {
+  flex-shrink: 0;
+  text-align: right;
+  margin-left: 10px;
+  order: 3; /* Le prix en dernier */
+}
+.order_box .list li a.truncate span {
+  float: none !important;
+   /* Permet de bien aligner les éléments */
+}
+/* Corrige le style global qui flottait les spans */
+

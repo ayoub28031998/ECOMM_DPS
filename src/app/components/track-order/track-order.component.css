@@ -1,0 +1,57 @@
+.track-order-page {
+  margin: 20px 0;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.order-summary {
+  margin-top: 20px;
+}
+
+.order-summary h3, .order-summary p {
+  margin: 5px 0;
+}
+
+.order-timeline {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.timeline-step {
+  display: flex;
+  align-items: center;
+}
+
+.step-marker {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.step-details h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.step-details p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.completed .step-marker {
+  background-color: #28a745; /* Couleur verte pour étapes complétées */
+}

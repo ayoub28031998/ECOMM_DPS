@@ -1,0 +1,256 @@
+.product-link {
+  color: black;
+  text-decoration: none;
+}
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Conteneur des boutons pour les espacer */
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+}
+
+/* Conteneur des boutons */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between; /* Espace égal entre les boutons */
+  margin-top: 20px; /* Espace au-dessus des boutons */
+}
+
+/* Style des boutons */
+.confirm-btn, .cancel-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  width: 48%; /* Largeur pour chaque bouton, ajustable si besoin */
+}
+
+.confirm-btn {
+  background-color: #946b6f;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #b0b0b0;
+  color: white;
+}
+
+.confirm-btn:hover {
+  background-color: #946b6f;
+}
+
+.cancel-btn:hover {
+  background-color: #b0b0b0;
+}
+/* Croix de fermeture */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #946b6f;
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    overflow-x: hidden;
+  }
+
+  .mobile-cart-item {
+    padding: 10px; /* Réduit les marges internes pour mobile */
+    word-wrap: break-word;
+    overflow-x: hidden;
+  }
+
+  .quantity-total, .cart-summary-mobile {
+    width: 100%; /* Évite que ces éléments débordent */
+    overflow-x: hidden;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .desktop-only {
+    display: block;
+  }
+  .mobile-only {
+    display: none;
+  }
+}
+/* General Styling for Mobile */
+/* Mobile-specific Styles */
+/* Mobile-specific Styles */
+/* Mobile-specific Styles */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .mobile-cart-item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .product-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .product-image {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+  }
+
+  .product-details {
+    flex: 1;
+    margin-left: 10px;
+  }
+
+  .product-name {
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    display: block;
+  }
+
+  .product-price {
+    color: #A72B78;
+    font-size: 1.1rem;
+  }
+
+  .delete-icon {
+
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+
+  .quantity-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .product_count {
+    display: flex;
+    align-items: center;
+  }
+
+  .input-text.qty {
+    height:50px;
+    width: 65px;
+    text-align: center;
+
+  }
+
+  .increase, .reduced {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .total-price {
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  .cart-summary-mobile {
+    border-top: 1px solid #e5e5e5;
+    padding-top: 15px;
+    margin-top: 15px;
+  }
+
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .coupon-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  .btn-quantity {
+    width: 20px;
+    height: 20px;
+    background-color: #aa0058;
+    color: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .input-quantity {
+    width: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  .coupon-section input {
+    flex: 1;
+    width: 20px;
+    margin-right: 10px;
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+.error-message {
+  color: red;
+  font-size: 14px;
+  white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+
+.success-message {
+  color: green;
+  font-size: 14px;
+  white-space: nowrap;
+}
+

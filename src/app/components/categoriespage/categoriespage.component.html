@@ -1,0 +1,38 @@
+<!--================Home Banner Area =================-->
+<div class="slider-area">
+  <!-- Mobile Menu -->
+
+
+<!--================Categories Cards Area =================-->
+<section class="categories-cards-area">
+  <div class="container">
+    <div class="section-title text-center mb-5">
+      <h2>🌟 Choisissez votre niveau 🌟</h2>
+      <p>Découvrez nos collections spécialement conçues pour chaque classe</p>
+    </div>
+
+    <div class="row categories-grid">
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-4" *ngFor="let niveau of Listcategories">
+        <div class="category-card" (click)="goToShop(niveau.id)">
+          <div class="card-image">
+        <img [src]="'assets/img/categories/' + niveau.id + '.jpeg'" 
+     [alt]="niveau.libelle"
+     (error)="handleImageError($event)">
+            <div class="card-overlay">
+              <span class="explore-btn">Je découvre <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+          
+          <!-- Badge niveau -->
+          <div class="level-badge" [ngClass]="getLevelClass(niveau.id)">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<app-footer></app-footer>

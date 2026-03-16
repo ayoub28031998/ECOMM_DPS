@@ -1,0 +1,70 @@
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('/assets/img/logoooo.avif') no-repeat center center/cover;
+}
+
+.logo img {
+  max-width: 400px; /* Adjust size as necessary */
+  height: auto;
+  display: block;
+  margin-bottom: 20px; /* Adjust spacing */
+}
+
+
+.loading-bar {
+  width: 70%; /* Keep the width of the bar at 70% of the screen width */
+  height: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.progress {
+  width: 0;
+  height: 100%;
+  background-color: #000;
+  animation: progressAnim 15s linear forwards; /* Adjusted animation duration to 15 seconds */
+}
+
+@keyframes progressAnim {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+.loading-bar {
+  width: 70%; /* Keep the width of the loading bar at 70% of the screen width */
+  height: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress {
+  width: 0;
+  height: 100%;
+  background-color: #000;
+  animation: progressAnim 1s linear forwards;
+  border-radius: 5px; /* Rounded edges for progress bar */
+}
+
+@keyframes progressAnim {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (max-width: 768px) {
+  .logo img {
+    max-width: 200px; /* Smaller size for mobile screens */
+  }
+}

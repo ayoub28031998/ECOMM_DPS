@@ -1,0 +1,500 @@
+<header>
+  <!-- Header Start -->
+  <div class="header-area">
+    <div class="main-header ">
+      <div class="header-top top-bg d-none d-lg-block">
+        <div class="container-fluid">
+          <div class="col-xl-12">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="header-info-left d-flex">
+                <!-- <div class="flag">
+                                  <img src="../../../assets/img/icon/header_icon.png" alt="">
+                              </div> -->
+                <!-- <div class="select-this">
+                                  <form action="#">
+                                      <div class="select-itms">
+                                          <select name="select" id="select1">
+                                              <option value="">USA</option>
+                                              <option value="">FR</option>
+                                          </select>
+                                      </div>
+                                  </form>
+                              </div> -->
+                <ul class="contact-now">
+                  <li>Livraison gratuite dés 99 DT</li>
+                </ul>
+              </div>
+              <div class="header-info-right">
+                <ul>
+                  <li><a href="/#/Home">Acceuil</a></li>
+                  <li><a href="/#/Contact">Contact</a></li>
+
+                  <li><a href="/#/wishlist">Liste de Favoris</a></li>
+                  <li><a href="/#/cart">Panier</a></li>
+                  <li class="user-menu d-none d-lg-block">
+                    <!-- Si connecté, afficher prénom + menu déroulant -->
+                    <ng-container *ngIf="isLoggedIn; else notLoggedIn">
+                      <a class="user-menu-toggle" routerLink="/accountinfos" >
+                        <i class="ti-user"></i> {{ currentUser?.prenom }}
+                      </a>
+
+                    </ng-container>
+
+                    <!-- Sinon, afficher lien vers login -->
+                    <ng-template #notLoggedIn>
+                      <a routerLink="/login" class="user-menu-item">
+                        Mon Compte
+                      </a>
+                    </ng-template>
+                  </li>
+
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom  header-sticky">
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <!-- Logo -->
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3">
+              <div class="logo d-none d-lg-block">
+                <a href="/#/Home"><img src="assets/img/logoo.jpeg" style="width:100px ;height:100px;" alt=""></a>
+              </div>
+            </div>
+            <!-- <div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
+                         Main-menu
+                         <div class="main-menu  d-none d-lg-block">
+                              <nav>
+                                  <ul id="navigation">
+                                      <li><a  href="/#/Home">Acceuil</a></li>
+                                      <li><a  href="/#/shop">Catagories</a></li>
+                                      <li><a href="#">Latest</a>
+                                          <ul class="submenu">
+                                              <li><a href="product_list.html"> Product list</a></li>
+                                              <li><a href="single-product.html"> Product Details</a></li>
+                                          </ul>
+                                      </li>
+                                      <li><a href="blog.html">Blog</a>
+                                          <ul class="submenu">
+                                              <li><a href="blog.html">Blog</a></li>
+                                              <li><a href="single-blog.html">Blog Details</a></li>
+                                          </ul>
+                                      </li>
+                                      <li><a href="#">Pages</a>
+                                        <ul class="submenu">
+                                            <li><a href="/#/login">Connexion</a></li>
+                                            <li><a href="/#/cart">Carte</a></li>
+                                            <li><a href="elements.html">Élément</a></li>
+                                            <li><a href="about.html">À propos</a></li>
+                                            <li><a href="confirmation.html">Confirmation</a></li>
+                                            <li><a href="/#/cart">Panier</a></li>
+                                            <li><a href="/#/checkout">Validation de la commande</a></li>
+                                        </ul>
+                                    </li>
+
+                                      <li><a  href="/#/contact">Contact</a></li>
+                                  </ul>
+
+                              </nav>
+
+                          </div>
+
+
+
+                      </div> -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-7 d-none d-lg-block" style="position: relative;">
+              <!-- Barre de recherche -->
+              <div class="form-box d-flex align-items-center">
+                <input type="text" name="Search" [(ngModel)]="searchQuery" placeholder="Recherche" class="search-bar"
+                  (input)="performInstantSearch()" (keyup.enter)="navigateToSearchPage()">
+                <div class="search-icon" (click)="navigateToSearchPage()">
+                  <i class="fas fa-search special-tag"></i>
+                </div>
+              </div>
+
+              <!-- Résultats de recherche -->
+              <div *ngIf="showResults" class="search-results">
+                <div class="search-header">
+                  <p style="font-size: 10px;">Le résultat de la recherche de "{{ searchQuery }}" ({{ articles.length }}
+                    résultats ont été trouvés.)</p>
+                  <button class="close-btn" (click)="showResults = false">×</button>
+                </div>
+                <div *ngIf="articles.length === 0">
+                  <p style="font-size: 12px; padding: 10px; color: gray;">
+                    Aucun article ne correspond à votre recherche.
+                  </p>
+                </div>
+                <ul>
+                  <li *ngFor="let article of articles" class="result-item" (click)="goToProduct(article.id, article.libelle)">
+                    <img [src]="article.images[0].data" alt="" class="result-image" />
+                    <div class="result-details">
+                      <h4 class="result-title">{{ article.libelle }}</h4>
+                      <p class="result-price">{{ article.prix_ttc | number:'1.3-3' }} DT</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3">
+              <!-- Icônes et bouton -->
+              <ul class="header-right f-right d-flex justify-content-end align-items-center flex-nowrap">
+                <li class="d-none d-xl-block">
+                  <div class="shopping-card">
+                    <a href="/#/wishlist"> <i class="far fa-heart"></i></a>
+                    <span class="shopping-badge">{{ wishlistCount }}</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="shopping-card d-none d-lg-block">
+                    <a (click)="toggleCart()"><i class="fas fa-shopping-cart"></i></a>
+                    <span class="shopping-badge">{{ cartCount }}</span>
+                  </div>
+                </li>
+
+                <!-- <li *ngIf="isLoggedIn" class="user-menu d-none d-lg-block">
+                  <a class="user-menu-toggle" (click)="toggleUserMenu()" [class.active]="userMenuOpen">
+                    <i class="ti-user"></i> {{ currentUser?.prenom }} <i class="fa fa-chevron-down"></i>
+                  </a>
+                  <ul class="user-menu-list" [class.show]="userMenuOpen">
+                    <li><a routerLink="/accountinfos" class="user-menu-item" (click)=" closeUserMenuExplicit()">Mon compte</a></li>
+                    <li>
+                      <a class="user-menu-item" (click)="logout()">Déconnexion</a>
+                    </li>
+                  </ul>
+                </li> -->
+                <li  class="d-none d-lg-block">
+                  <a (click)="toggleCart()" class="btn header-btn" style="color:white">Commander</a>
+                </li>
+                <!-- <li *ngIf="!isLoggedIn" class="d-none d-lg-block">
+                            <a href="/#/login" class="btn header-btn">Se connecter</a>
+                          </li> -->
+              </ul>
+            </div>
+
+
+
+            <div class="col-12 mt-3 d-none d-lg-block">
+              <div class="categories-menu full-width">
+                <nav class="navbar navbar-expand-lg navbar-light w-100">
+                  <div class="collapse navbar-collapse offset w-100 d-none d-lg-block" id="navbarSupportedContent">
+                    <div class="row w-100 mr-0">
+                      <div class="col-lg-12 pr-0">
+                        <ul class="nav navbar-nav">
+
+                         <!--  <li class="nav-item" (mouseenter)="selectCategory('marques')"
+                            (mouseleave)="hideDropdown($event)">
+                            <a class="nav-link" style="color: black; cursor: pointer; font-weight: bold">
+                              <img src="assets/img/xo/marque.png" alt="Marque 4"
+                                style="cursor: pointer; width: 20px ; height: 20px;" /> Marques
+                            </a>
+
+
+                          </li> -->
+   <li class="nav-item">
+                            <a class="nav-link" style="color: black; cursor: pointer; font-weight: bold"
+                              href="/#/livres">
+                             Livres
+                            </a>
+                          </li>
+
+                       <!--    <li class="nav-item" *ngFor="let category of listCategory"
+                            (mouseenter)="selectCategory(category)" (mouseleave)="hideDropdown($event)">
+                            <a class="nav-link" style="color: black; cursor: pointer; font-weight: bold"
+                              (click)="goToShop(category.id) ; closeDropdown()">
+                            
+
+                              {{ category.libelle }}
+                            </a>
+                          </li> -->
+
+
+                          <li class="nav-item">
+                            <a class="nav-link" style="color: black; cursor: pointer; font-weight: bold"
+                              href="/#/packs">
+                              Packs
+                            </a>
+                          </li>
+
+                          <li class="nav-item">
+                            <a class="nav-link" style="color: black; cursor: pointer; font-weight: bold"
+                              href="/#/promotion">
+                              Promotions
+                            </a>
+                          </li>
+                        </ul>
+
+
+                        <div class="dropdown-container" (mouseenter)="showDropdown(selectedCategory)"
+                          (mouseleave)="hideDropdown($event)">
+                          <div class="dropdown-menu" *ngIf="selectedCategory">
+                            <div class="container">
+                              <div class="row">
+                                <!-- Si la catégorie est "Marques", afficher les marques -->
+                                <div class="dropdown-column" *ngIf="selectedCategory?.libelle === 'Marques'">
+                                  <div class="row">
+                                    <div class="col-md-4"
+                                      *ngFor="let marque of selectedCategory?.sous_categories; let i = index">
+                                      <div class="sub-category-header with-border" style="max-width: 350px">
+                                        <a class="nav-link" [class.active]="marque.id === selectedBrandId"
+                                          style="cursor: pointer; font-weight: bold"
+                                          (click)="navigateToBrand(marque); closeDropdown()">
+                                          {{ marque.libelle }}
+                                        </a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="dropdown-column" *ngIf="selectedCategory?.libelle !== 'Marques'">
+                                  <div class="row">
+                                    <div class="col-md-3"
+                                      *ngFor="let subCategory of selectedCategory?.sous_categories; let i = index">
+                                      <div class="sub-category-header with-border">
+                                        <a class="nav-link" style="cursor: pointer; font-weight: bold"
+                                          (click)="navigateToSubCategory(subCategory.id); closeDropdown()">
+                                          {{ subCategory.libelle }}
+                                        </a>
+                                      </div>
+                                      <ul class="sub-sub-category-list">
+                                        <li
+                                          *ngFor="let sousSousCategory of getSousSousCategoriesBySubCategory(subCategory.id)">
+                                          <a style="cursor: pointer;"
+                                            (click)="navigateToSousSousCategory(sousSousCategory.id); closeDropdown()"
+                                            [class.active]="sousSousCategory.id === selectedSousSousCategoryId">
+                                            {{ sousSousCategory.libelle }}
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-cart-sidebar *ngIf="isCartOpen" (close)="toggleCart()"></app-cart-sidebar>
+  <!-- Header End -->
+</header>
+<header class="mobile-header d-block d-lg-none">
+  <div class="mobile-header">
+    <!-- Contact Info -->
+    <div class="contact-info d-flex align-items-center justify-content-center">
+      <i [ngClass]="contactIcon"></i>
+      <p *ngIf="contactMessage !== 'Livraison gratuite dès 99 DT'">
+        <a [href]="'tel:' + contactMessage" style="text-decoration: none; color: inherit;">
+          {{ contactMessage }}
+        </a>
+      </p>
+      <p *ngIf="contactMessage === 'Livraison gratuite dès 99 DT'">
+        {{ contactMessage }}
+      </p>
+    </div>
+
+
+
+    <!-- Header Row with Logo, Menu, and Cart -->
+    <div class="main-header" [class.fixed]="showScrollHeader">
+      <div class="header-row d-flex justify-content-between align-items-center">
+        <button class="menu-btn" (click)="openMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo-container">
+          <a href="/#/Home"><img src="assets/img/logo.png" alt="Logo"></a>
+        </div>
+        <div class="shopping-card">
+          <a (click)="toggleCart()" class="shopping"><i class="fas fa-shopping-cart"></i></a>
+          <span class="shopping-badgee">{{ cartCount }}</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Search Bar -->
+    <div class="search-bar-wrapper">
+      <input type="text" name="Search" [(ngModel)]="searchQuery" placeholder="Recherche"   class="search-bar"
+      (input)="performInstantSearch()" (keyup.enter)="navigateToSearchPage()">
+
+      <div class="search-icon" >
+        <i class="fas fa-search" (click)="navigateToSearchPage()"></i>
+      </div>
+    </div>
+    <div class="search-results-mobile" *ngIf="searchQuery.trim() !== ''">
+      <div class="search-header">
+        <p style="font-size: 10px;" >
+          Le résultat de la recherche de "{{ searchQuery }}" ({{ articles.length }} résultats ont été trouvés.)
+        </p>
+        <button class="close-btn" (click)="showResults = false">×</button>
+      </div>
+
+      <!-- 🔸 AUCUN RÉSULTAT -->
+      <div *ngIf="articles.length === 0">
+        <p style="font-size: 12px; padding: 10px; color: gray;">
+          Aucun article ne correspond à votre recherche.
+        </p>
+      </div>
+
+      <!-- 🔸 AFFICHAGE DES RÉSULTATS -->
+      <ul *ngIf="articles.length > 0">
+        <li *ngFor="let article of articles" class="result-item" (click)="goToProduct(article.id, article.libelle)">
+          <img [src]="article.images[0].data" alt="" class="result-image" />
+          <div class="result-details">
+            <h4 class="result-title">{{ article.libelle }}</h4>
+            <p class="result-price">{{ article.prix_ttc | number:'1.3-3' }} DT</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
+  </div>
+
+  <!-- Side Menu -->
+  <div class="menu-overlay" [class.active]="isMenuOpen" (click)="closeMenu()"></div>
+  <div class="side-menu" [class.open]="isMenuOpen">
+    <div class="side-menu-header">
+      <h5>Menu</h5>
+      <button style="  background: none; border: none;" (click)="closeMenu()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <ul class="categories-list list-unstyled">
+      <li class="nav-item">
+        <a class="nav-link" (click)="goToHome();closeMenu()" style="color: black; cursor: pointer; font-weight: bold;">
+          <img src="assets/img/xo/home.png" alt="Home"
+            style="cursor: pointer; width: 20px ; height: 20px; margin-right: 8px;" /> Accueil
+        </a>
+      </li>
+      <!-- Marques -->
+      <li class="nav-item">
+        <a class="nav-link" (click)="toggleDropdown('marques')"
+          style="color: black; cursor: pointer; font-weight: bold">
+          <img src="assets/img/xo/marque.png" alt="Marque 4"
+            style="cursor: pointer; width: 20px ; height: 20px; margin-right: 8px;" /> Marques
+          <i class="fleche" [class]="dropdowns['marques'] ? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
+        </a>
+
+      </li>
+      <ul *ngIf="dropdowns['marques']" class="list-unstyled sub-categories">
+        <li class="marque" *ngFor="let marque of Marques" (click)="navigateToBrand(marque); closeMenu()">
+          {{ marque.libelle }}
+        </li>
+      </ul>
+
+      <!-- Catégories -->
+      <li class="nav-item" *ngFor="let category of listCategory">
+        <!-- Catégorie principale -->
+        <a class="nav-link" [ngClass]="{ 'selected-category': selectedCategory === category }"
+          (click)="goToShop(category.id); closeMenu()"
+          style="color: black; cursor: pointer; font-weight: bold; display: flex;">
+          <img [src]="getIconForCategory(category.libelle)" (click)="goToShop(category.id); closeMenu()" alt="Icon for"
+            style="width: 20px ; height: 20px; margin-right: 8px;" />
+          {{ category.libelle }}
+          <i class="fleche" (click)="selectCategory(category); $event.stopPropagation()"
+            [class]="selectedCategory === category ? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
+        </a>
+
+        <!-- Sous-catégories -->
+        <ul *ngIf="selectedCategory === category" class="list-unstyled sub-categories">
+          <li *ngFor="let subCategory of category.sous_categories">
+            <!-- En-tête de la sous-catégorie -->
+            <div class="sub-category-header"
+              [ngClass]="{ 'selected-sub-category': selectedSubCategory === subCategory}">
+              <a (click)="navigateToSubCategory(subCategory.id) ; closeMenu()" style="padding-left: 20px;">
+                {{ subCategory.libelle }}
+              </a>
+              <button *ngIf="hasSousSousCategories(subCategory.id)" class="toggle-icon"
+                (click)="toggleSousSousCategories(subCategory.id)">
+                <i [class]="expandedSubCategories[subCategory.id] ? 'fa fa-minus' : 'fa fa-plus'"></i>
+              </button>
+            </div>
+
+            <!-- Sous-sous-catégories (affichées sous la sous-catégorie actuelle) -->
+            <ul class="soussous" *ngIf="expandedSubCategories[subCategory.id]"
+              class="sub-sub-category-list list-unstyled" style="margin-left: 20px; margin-top: 5px;">
+              <li *ngFor="let sousSousCategory of getSousSousCategoriesBySubCategory(subCategory.id)">
+                <a class="souscat" (click)="navigateToSousSousCategory(sousSousCategory.id) ; closeMenu()"
+                  style="padding-left: 20px; ">
+                  {{ sousSousCategory.libelle }}
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+
+      </li>
+
+
+      <!-- Packs -->
+      <li class="nav-item">
+        <a class="nav-link" (click)="goToPacks();closeMenu()" style="color: black; cursor: pointer; font-weight: bold;">
+          <img src="assets/img/xo/pack.png" alt="Marque 4"
+            style="cursor: pointer; width: 20px ; height: 20px; margin-right: 8px;" /> Packs
+        </a>
+      </li>
+
+      <!-- Offres et promotions -->
+      <li class="nav-item">
+        <a class="nav-link" (click)="goToPromo();closeMenu()" style="color: black; cursor: pointer; font-weight: bold;">
+          <img src="assets/img/xo/promotion.png" alt="Marque 4"
+            style="cursor: pointer; width: 20px; height: 20px; margin-right: 8px;" /> Offres et promotions
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="goToFavoris();closeMenu()"
+          style="color: black; cursor: pointer; font-weight: bold;">
+          <img src="assets/img/xo/amour.png" alt="favoris"
+            style="cursor: pointer; width: 20px ; height: 20px; margin-right: 8px;" /> Liste de favoris
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="goToContact();closeMenu()"
+          style="color: black; cursor: pointer; font-weight: bold;">
+          <img src="assets/img/xo/contact.png" alt="Contact"
+            style="cursor: pointer; width: 20px ; height: 20px; margin-right: 8px;" /> Contact
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a class="nav-link" routerLink="/accountinfos" (click)="closeMenu()" style="color: black; cursor: pointer; font-weight: bold;">
+          <img src="assets/img/xo/profil.png" alt="User" style="width: 20px; height: 20px; margin-right: 8px;" />
+          Mon compte
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" (click)="isLoggedIn ? logout() : goToLogin(); closeMenu()" style="color: black; cursor: pointer; font-weight: bold;">
+          <img src="assets/img/xo/connexion.png" alt="Connexion" style="width: 20px; height: 20px; margin-right: 8px;" />
+          {{ isLoggedIn ? 'Déconnexion' : 'Se Connecter' }}
+        </a>
+      </li>
+
+    </ul>
+
+
+  </div>
+</header>

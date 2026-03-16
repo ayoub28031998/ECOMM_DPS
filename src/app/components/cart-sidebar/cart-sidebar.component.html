@@ -1,0 +1,21 @@
+<div class="cart-sidebar" [class.open]="isOpen">
+  <div class="cart-sidebar-header">
+    <h2>Panier</h2>
+    <button class="close-btn" (click)="closeSidebar()">×</button>
+  </div>
+  <div class="cart-items">
+    <div *ngFor="let item of cartItems" class="cart-item">
+      <img [src]="item.images?.length > 0 ? item.images[0]?.data : item.image" alt="{{ item.libelle }}" width="50" height="50">
+      <div class="cart-item-details">
+        <h4>{{ item.libelle }}</h4>
+        <p>{{ item.quantity }} × {{ (item.promo !== 0 ? (item.prix_final || item.prix) : (item.prix_ttc || item.prix)) | number:'1.3-3' }} TND</p>
+
+      </div>
+      <button class="remove-item" (click)="removeItem(item)"><i class="fas fa-trash"></i></button>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <p >Total: {{ total | number:'1.3-3' }} TND</p>
+    <button (click)="goToCart()" class="view-cart-btn">Voir Panier</button>
+  </div>
+</div>

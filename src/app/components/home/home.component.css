@@ -1,0 +1,573 @@
+.product-buttons {
+  display: flex;
+  justify-content: center; /* Centrer tous les boutons horizontalement */
+  align-items: center; /* Alignement vertical */
+  gap: 5px; /* Réduction de l'espace entre les boutons */
+  margin-top: 10px; /* Réduction de l'espace au-dessus des boutons */
+}
+
+.product-buttons .btn-icon {
+  width: 35px; /* Taille ajustée pour les icônes */
+  height: 35px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  margin: 0; /* Supprime les marges par défaut */
+  padding: 0; /* Supprime tout padding éventuel */
+}
+
+.product-buttons .btn-icon:hover {
+  background-color: #f7f7f7;
+  transform: scale(1.1);
+}
+
+.product-buttons .btn-icon i {
+  font-size: 14px;
+  color: #333;
+}
+
+.product-buttons .btn-main {
+  background-color: #aa0058;
+  color: #fff;
+  padding: 8px 15px; /* Ajustement du padding du bouton principal */
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  margin: 0; /* Supprime les marges par défaut */
+}
+
+.product-buttons .btn-main:hover {
+  background-color: #c40c6b;
+  transform: scale(1.05);
+}
+
+.product-img img {
+  width: 100%;
+  height: 200px; /* Hauteur fixe pour uniformiser les images */
+  object-fit: cover; /* Coupe et ajuste l'image pour remplir l'espace */
+}
+.category-area .category-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px; /* Coins arrondis pour les images */
+}
+
+.category-area .category-img img {
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.category-area .category-img:hover img {
+  transform: scale(1.1); /* Effet de zoom au survol */
+}
+
+.category-area .category-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  border-radius: 0 0 15px 15px;
+}
+
+.category-area .category-caption h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.category-area .category-caption a {
+  color: #ffc107;
+  text-decoration: none;
+}
+
+.category-area .category-caption a:hover {
+  text-decoration: underline;
+}
+.categorie-img img {
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.categorie-img:hover img {
+  transform: scale(1.1);
+}
+
+.product-btm h4 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+
+
+.product-img {
+  width: 100%; /* S'assure que l'image prend toute la largeur */
+  height: auto; /* Ajuste automatiquement la hauteur pour conserver les proportions */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Masque les parties débordantes */
+  border-radius: 10px; /* Facultatif : coins arrondis */
+}
+
+.product-img img {
+  max-width: 100%; /* Limite la largeur à 100% */
+  max-height: 100%; /* Limite la hauteur à 100% */
+  object-fit: contain; /* Garde les proportions de l'image */
+}
+
+
+
+.product-title {
+  font-weight: bold;
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  line-height: 1.2;
+  font-family: 'Poppins', sans-serif;
+  height: 40px; /* Fixe la hauteur pour 2 lignes */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limite à 2 lignes */
+  -webkit-box-orient: vertical;
+}
+
+.product-title:hover {
+  color: #aa0058;
+
+}
+.product-price {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #9b1c74;
+  font-weight: bold;
+}
+del {
+  color: #aaa;
+  margin-left: 5px;
+  font-size: 14px;
+}
+.navigation-buttons {
+  margin-top: 20px;
+}
+
+.navigation-buttons button {
+  margin: 0 10px;
+  font-size: 18px;
+  padding: 10px 15px;
+}
+.btn-no-hover-outline {
+  outline: none !important; /* Supprime le contour bleu */
+  box-shadow: none !important; /* Supprime l'ombre par défaut */
+}
+
+.btn-no-hover-outline:hover {
+  background-color: transparent !important; /* Empêche tout changement de fond */
+  border-color: #ddd !important; /* Garde une bordure grise */
+  color: inherit !important; /* Préserve la couleur d'origine */
+}
+.navigation-buttons .btn {
+  border-radius: 50%; /* Forme ronde */
+  background-color: transparent; /* Couleur de fond */
+  color: #aa0058; /* Couleur de l'icône */
+  width: 50px; /* Taille de bouton */
+  height: 50px; /* Taille de bouton */
+  border: none; /* Supprime la bordure */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.navigation-buttons .btn:hover {
+  background-color: transparent; /* Couleur de fond au survol */
+  color:#c40c6b;
+  transform: scale(1.1); /* Zoom léger au survol */
+}
+
+.navigation-buttons .btn i {
+  font-size: 20px; /* Taille de l'icône */
+}
+.btn:focus {
+  outline: none !important; /* Supprime le contour bleu */
+  box-shadow: none !important; /* Supprime les ombres */
+}
+.navigation-buttons {
+  display: flex; /* Aligne les boutons horizontalement */
+  justify-content: center; /* Centre les boutons horizontalement */
+  gap: 10px; /* Ajoute un espace entre les boutons */
+  margin-top: 20px; /* Ajoute de l'espace au-dessus des boutons */
+}
+/* Règles pour appareils avec une largeur max de 768px */
+@media (max-width: 768px) {
+  /* Supprimer le bloc blanc sur le côté droit */
+  body {
+    overflow-x: hidden;
+  }
+
+  .container,
+  .container-fluid {
+    padding: 0 15px; /* Assurez-vous que les marges sont bien gérées */
+  }
+
+  /* Ajuster les images dans les produits pour s'adapter à l'écran */
+  .product-img img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Gérer l'alignement du texte dans les produits */
+  .product-caption {
+    text-align: center;
+  }
+
+
+  /* Réduire les marges et paddings pour plus d'espace */
+
+  .product-buttons a,
+  .product-buttons button {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  /* Boutons de navigation (précédent/suivant) */
+  .navigation-buttons .btn {
+    font-size: 16px;
+    padding: 5px 15px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  /* Supprime les débordements horizontaux */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Corrige les conteneurs qui pourraient déborder */
+  .container, .container-fluid {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  /* Empêche les images ou autres éléments de dépasser les limites */
+  img, .product-img img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Assure que les sections ne débordent pas */
+  .section-padding30, .padding-bottom {
+    margin: 0 auto;
+    padding: 0 15px; /* Ajuste les marges internes */
+    max-width: 100%;
+  }
+
+  /* Corrige tout comportement de décalage lié au clic */
+  .single-product {
+    position: relative; /* Empêche les éléments de bouger */
+    overflow: hidden;
+  }
+
+  /* Élimine tout effet de translation */
+  .product-img img:active, .product-img img:focus {
+    transform: none;
+  }
+
+  /* Supprime tout margin/padding résiduel */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Gère les débordements en fonction de la taille de la boîte */
+  }
+}
+@media (max-width: 768px) {
+  /* Ajouter un espacement entre les articles */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+  }
+
+  .single-product {
+    margin-bottom: 15px; /* Ajoute un espace vertical entre les lignes */
+    padding: 5px; /* Ajoute un peu d'espace interne */
+  }
+}
+@media (max-width: 768px) {
+  /* Ajouter un espacement entre le titre et les flèches */
+
+
+  /* Ajouter un espacement autour des blocs de service */
+  .single-method {
+    margin-bottom: 20px; /* Espace vertical entre les blocs */
+    padding: 10px; /* Ajoute un peu d'espace interne pour plus d'aération */
+    text-align: center; /* Centrer le contenu */
+  }
+
+  /* Optionnel : Centrer le carré de "Livraison Rapide" */
+  .single-method i {
+    margin-bottom: 10px; /* Espace entre l'icône et le texte */
+    display: block; /* Place l'icône sur une ligne séparée */
+  }
+}
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slider-content {
+  position: relative;
+}
+
+.slider-content img {
+
+  width: 100%;
+  margin-bottom: 20px;
+  height: auto;
+  border-radius: 10px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Flèches de navigation */
+.arrow-left,
+.arrow-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.arrow-left {
+  left: 10px;
+}
+
+.arrow-right {
+  right: 10px;
+}
+
+/* Effet de hover */
+.arrow-left:hover,
+.arrow-right:hover {
+  background: #aa0058;
+}
+.discount-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  font-weight: bold;
+  border-radius: 3px;
+}
+.badge {
+position: absolute;
+top: 1px;
+left: 4px;
+background-color: red;
+color: white;
+padding: 2px 0px;
+font-size: 0.9em;
+font-weight: bold;
+}
+
+body {
+  overflow-x: hidden;
+}
+.container {
+/* Gestion des marges latérales */
+  overflow: hidden; /* Masque tout débordement interne */
+}
+
+.marques-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.marques-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: marque-scroll 90s linear infinite;
+  overflow: hidden;
+  white-space: nowrap;
+  width: max-content; /* La largeur s'ajuste automatiquement au contenu */
+}
+.marques-container {
+  pointer-events: auto; /* Les clics doivent être activés */
+}
+
+
+.marque-item {
+  flex: 0 0 auto; /* Empêche les éléments de se redimensionner */
+  text-align: center;
+ /* border: 1px solid #ddd;*/
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  width: 150px; /* Largeur fixe */
+  height: 200px; /* Hauteur fixe */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box; /* Inclure le padding dans les dimensions */
+}
+
+.marque-img {
+  max-width: 100%;
+  max-height: 100px; /* Taille maximale pour l'image */
+  object-fit: contain; /* Conserve les proportions de l'image */
+  margin-bottom: 10px;
+}
+
+.marque-name {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+@keyframes marque-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+/* Style de base pour chaque produit */
+.single-product {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background: #fff;
+  height: 100%; /* Assure une hauteur uniforme */
+}
+
+/* Supprime les marges qui peuvent casser la mise en page */
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.col-6 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+  .col-6 {
+    flex: 0 0 50%; /* Deux colonnes côte à côte */
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .col-6 {
+    flex: 0 0 50%; /* Toujours deux colonnes sur les petits écrans */
+    max-width: 50%;
+  }
+}
+.navigation-buttons {
+  display: flex;
+  gap: 10px; /* Espacement entre les flèches */
+}
+
+.btn-arrow {
+  background-color: red; /* Couleur personnalisée */
+  color: white;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-size: 18px;
+}
+
+.btn-arrow:disabled {
+  background-color: #ccc; /* Grisé si désactivé */
+}
+@media (min-width: 992px) { /* Version Desktop */
+  .navigation-buttons {
+      display: flex;
+      gap: 10px; /* Espacement entre les flèches */
+  }
+
+  .row.product-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .navigation-buttons {
+      margin-top: 5px; /* Ajuste si nécessaire */
+  }
+}
+
+/* Mobile (moins de 768px) */
+@media (max-width: 768px) {
+  .navigation-buttons {
+      display: flex;
+      justify-content: flex-end; /* Aligner les flèches à droite */
+      gap: 10px; /* Espacement entre les boutons */
+      margin-top: -34px; /* Ajustez si nécessaire pour un espacement vertical */
+      margin-right: -32px;
+  }
+
+  .row.product-btn {
+      flex-wrap: wrap; /* Permet de gérer le comportement des éléments */
+      justify-content: space-between; /* Gère l'espacement dans la rangée */
+  }
+}
+/* Conteneur permettant le défilement horizontal */
+.scroll-container {
+  display: flex;
+  overflow-x: auto; /* Active le défilement horizontal */
+  scroll-snap-type: x mandatory; /* Active le verrouillage sur chaque élément */
+  gap: 10px; /* Espacement entre les articles */
+  padding: 10px; /* Espacement intérieur */
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none; /* Cache la barre de défilement pour un design plus propre */
+}
+
+.single-product-wrapper {
+  flex: 0 0 auto; /* Empêche les articles de rétrécir */
+  scroll-snap-align: start; /* Aligne chaque article avec le conteneur */
+  width: 150px; /* Largeur de chaque article, ajustez selon vos besoins */
+}
+
+

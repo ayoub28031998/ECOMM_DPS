@@ -1,0 +1,126 @@
+<main class="main">
+  <div class="login-container">
+    <h2 class="title">Inscrivez-Vous</h2>
+
+    <!-- Display error message when registration fails -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <form (ngSubmit)="registerUser()">
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          placeholder="Entrez votre e-mail"
+          [(ngModel)]="user.email"
+          name="email"
+          required
+        />
+      </div>
+
+
+      <div class="form-group">
+        <label for="username">Nom</label>
+        <input
+          type="text"
+          id="nom"
+          class="form-control"
+          placeholder="Entrez votre nom "
+          [(ngModel)]="user.nom"
+          name="nom"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="username">Prenom</label>
+        <input
+          type="text"
+          id="prenom"
+          class="form-control"
+          placeholder="Entrez votre prenom"
+          [(ngModel)]="user.prenom"
+          name="prenom"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="username">Telephone</label>
+        <input
+          type="text"
+          id="telephone"
+          class="form-control"
+          placeholder="Entrez votre numero du telephone"
+          [(ngModel)]="user.telephone"
+          name="username"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="username">Date de naissance</label>
+        <input
+        type="date"
+          id="date_naissance"
+          class="form-control"
+          placeholder="Entrez votre date de naissance"
+          [(ngModel)]="user.date_naissance"
+          name="date_naissance"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <div class="password-group" style="position: relative;">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            class="form-control"
+            placeholder="Entrez votre mot de passe"
+            [(ngModel)]="user.password"
+            name="password"
+            required
+          />
+          <i
+            class="toggle-password fa"
+            [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="togglePasswordVisibility()"
+            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"
+          ></i>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirmer le mot de passe</label>
+        <div class="password-group" style="position: relative;">
+          <input
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            id="confirmPassword"
+            class="form-control"
+            placeholder="Confirmez votre mot de passe"
+            [(ngModel)]="confirmPassword"
+            name="confirmPassword"
+            required
+          />
+          <i
+            class="toggle-password fa"
+            [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="toggleConfirmPasswordVisibility()"
+            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"
+          ></i>
+        </div>
+      </div>
+
+      <!-- Message d'erreur si les mots de passe ne correspondent pas -->
+      <p *ngIf="passwordMismatch" style="color: red;">Les mots de passe ne correspondent pas.</p>
+
+      <button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
+    </form>
+
+    <p class="text-center">
+      Vous avez déjà un compte ? <a routerLink="/login" style="color:#A72B78">Connectez-vous</a>
+    </p>
+  </div>
+</main>
+<app-footer></app-footer>

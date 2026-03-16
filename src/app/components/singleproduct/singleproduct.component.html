@@ -1,0 +1,304 @@
+
+<div class="slider-area "  style="margin-bottom: -130px;">
+  <!-- Mobile Menu -->
+  <div class="single-slider slider-height2 d-flex align-items-center justify-content-center" style="background-image: url('../../../assets/img/hero/area.png'); ">
+    <div class="container">
+      <div class="row">
+          <div class="col-xl-12">
+              <div class="hero-cap text-center">
+                <h2>Détails du produit</h2>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  </div>
+</div>
+<!-- slider Area End-->
+
+<!--================Single Product Area =================-->
+<div class="product_image_area" >
+  <div class="container">
+    <div class="row align-items-center"> <!-- Alignement vertical -->
+
+      <!-- Colonne pour l'image -->
+      <div class="col-lg-6 col-md-6">
+        <div class="product_img_slide owl-carousel">
+          <div class="single_product_img">
+            <img   [src]="displayedImage"
+               [alt]="'Image affichée : ' + displayedImage"
+            class="img-fluid product-image" style="width: 500px; height: 500px;">
+            <div *ngIf="article?.promo !== 0" class="discount-badge">
+              -{{ ((1 - article.prix_final / article.prix_ttc) * 100) | number:'1.0-0' }}%
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonne pour les détails -->
+      <div class="col-lg-6 col-md-6">
+        <div class="single_product_text position-relative">
+
+
+         
+
+          <div class="review-section position-absolute">
+            <!-- Texte "Donner un avis" -->
+            <a href="javascript:void(0);" (click)="goToReviews()" class="review-text d-block mb-2">DONNEZ UN AVIS</a>
+            <!-- Icône cœur -->
+            <span class="review-heart d-block" (click)="addToWishlist(article)">
+              <i class="ti-heart"></i>
+            </span>
+          </div>
+
+          <!-- Titre du produit avec largeur limitée -->
+          <h3 class="product-title" >{{ article?.libelle }}</h3>
+
+
+          <!-- Étoiles -->
+          <div class="stars mb-3">
+            <span *ngFor="let star of [1, 2, 3, 4, 5]" [class.filled]="isStarFilled(star)">
+              ★
+            </span>
+            <span class="average-note">({{ article?.note?.toFixed(2) || '0.00' }})</span>
+          </div>
+<p style="color: #333; 
+          white-space: pre-wrap; 
+          direction: rtl; 
+          text-align: right; 
+          font-family: 'Amiri', 'Scheherazade', 'Traditional Arabic', Tahoma, sans-serif;
+          font-size: 1.1rem;
+          line-height: 1.8;
+          padding: 10px;
+          background: #f9f9f9;
+          border-radius: 8px;
+          border-right: 4px solid #aa0058;">
+  {{ article?.description }}
+</p>          <!-- Prix -->
+          <div class="product-price">
+            <span *ngIf="article.promo !== 0" class="promo">{{ article.prix_final | number:'1.3-3' }} TND</span>
+            <del *ngIf="article.promo !== 0">{{ article.prix_ttc | number:'1.3-3' }} TND</del>
+            <span *ngIf="article.promo === 0">{{ article.prix_ttc | number:'1.3-3'}} TND</span>
+          </div>
+
+
+            <!-- Blocs de teintes-->
+       <!-- Blocs de teintes -->
+<div class="teintes-section" *ngIf="article.variants && article.variants.length > 0">
+  <h5 class="teintes-title">Couleurs</h5>
+
+  <!-- Carrés de couleurs -->
+  <div class="teintes d-flex align-items-center mb-3">
+    <div
+      class="teinte-item"
+      *ngFor="let variant of article.variants"
+      [style.background-color]="variant.icon_color"
+      [ngClass]="{'selected': selectedVariant?.id === variant.id}"
+      (click)="selectVariant(variant)">
+    </div>
+  </div>
+
+  <!-- Liste déroulante -->
+  <div class="d-flex align-items-center">
+    <div class="teinte-preview" [style.background-color]="selectedVariant?.icon_color"></div>
+
+    <select class="form-select ml-3" [(ngModel)]="selectedVariant" (change)="onVariantChange()">
+      <option *ngFor="let variant of article.variants" [ngValue]="variant">
+        {{ variant.libelle }}
+      </option>
+    </select>
+  </div>
+</div>
+
+
+
+<a *ngIf="article.variants?.length > 0">
+  <ng-container *ngIf="selectedVariant">
+    <span [ngClass]="{
+      'text-success': selectedVariant.stock > 0,
+      'text-danger': selectedVariant.stock <= 0,
+      'blink-stock': isStockBlinking
+    }">
+      {{ selectedVariant.stock > 0 ? 'En stock' : 'STOCK Épuisé' }}
+    </span>
+  </ng-container>
+
+</a>
+
+<!-- Si PAS de variants -> on regarde article.stock -->
+<a *ngIf="!article.variants || article.variants.length === 0"
+   [ngClass]="{
+      'text-success': article.stock > 0,
+      'text-danger': article.stock <= 0,
+      'blink-stock': isStockBlinking
+    }">
+  {{ article.stock > 0 ? 'En stock' : 'STOCK Épuisé' }}
+</a>
+
+
+           <!-- Zone quantité -->
+            <div class="card_area" *ngIf="article?.stock > 0 || article?.stock_arrivage > 0">
+              <div class="product_count_area d-flex align-items-center justify-content-start mb-3">
+                <!-- Label Quantity -->
+                <p class="mr-2 mb-0 font-weight-bold">Quantité : </p>
+
+                <!-- Contrôle de quantité -->
+                <div class="product_count d-flex align-items-center">
+                  <button
+                    class="product_count_item inumber-decrement"
+                    (click)="decreaseQuantity(article)">
+                    <i class="ti-minus"></i>
+                  </button>
+                  <input
+                    class="product_count_item input-number"
+                    type="text"
+                    [(ngModel)]="quantity"
+                    min="1"
+                    maxlength="12">
+                  <button
+                    class="product_count_item number-increment"
+                    (click)="increaseQuantity(article)"
+                    [disabled]="quantity >= article.stock">
+                    <i class="ti-plus"></i>
+                  </button>
+                </div>
+
+
+                <!-- Prix total -->
+                <!-- <p class="ml-4 mb-0 font-weight-bold">{{ getTotalPrice(article) | number: '1.2-2' }} DT</p> -->
+              </div>
+
+
+          <!-- Bouton Ajouter au Panier -->
+          <div class="add_to_cart">
+            <button (click)="addToCart($event, article, quantity)" class="btn_3" style="cursor: pointer; padding: 18px 65px;"><i class="ti-shopping-cart"></i>    Ajouter au panier</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 
+<section class="product_description_area">
+  <div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          id="home-tab"
+          data-toggle="tab"
+          href="#home"
+          role="tab"
+          aria-controls="home"
+          aria-selected="true"
+          >Plus de détails</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          id="profile-tab"
+          data-toggle="tab"
+          href="#profile"
+          role="tab"
+          aria-controls="profile"
+          aria-selected="false"
+          >Mode d'utilisation</a
+        >
+      </li>
+      <li  #reviewsTab class="nav-item">
+        <a
+          class="nav-link "
+          id="reviews-tab"
+          data-toggle="tab"
+          href="#reviews"
+          role="tab"
+          aria-controls="reviews"
+          aria-selected="true"
+          >Avis</a
+        >
+      </li>
+
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <p style="  white-space: pre-wrap;">{{article?.plus_details}}</p>
+      </div>
+
+      <div
+        class="tab-pane fade"
+        id="profile"
+        role="tabpanel"
+        aria-labelledby="profile-tab"
+      >
+      <p [innerHTML]="formatText(article?.mode_utilisation)">{{article?.mode_utilisation}}</p>
+
+      </div>
+      <div #reviewsSectio  class="tab-pane fade  show" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+        <div class="review-input-container"  *ngIf="isLoggedIn">
+          <textarea
+            [(ngModel)]="reviewText"
+            placeholder="Laissez un commentaire"
+            class="review-input"
+          ></textarea>
+          <div class="rating">
+            <span (click)="rateProduct(1)" [class.selected]="rating >= 1">★</span>
+            <span (click)="rateProduct(2)" [class.selected]="rating >= 2">★</span>
+            <span (click)="rateProduct(3)" [class.selected]="rating >= 3">★</span>
+            <span (click)="rateProduct(4)" [class.selected]="rating >= 4">★</span>
+            <span (click)="rateProduct(5)" [class.selected]="rating >= 5">★</span>
+          </div>
+          <button (click)="submitReview()" class="btn_3">
+            Envoyer l'avis
+          </button>
+        </div>
+
+        <div class="not-logged-in-message" *ngIf="!isLoggedIn">
+          <p>Vous devez être connecté pour laisser un commentaire. <a routerLink="/login" style="color:#A72B78;">Se connecter</a></p>
+        </div>
+
+        <div class="review-list-container">
+          <div *ngFor="let review of article.reviews" class="review-item">
+
+            <p>
+              <strong>{{ review.client?.nom || 'Utilisateur' }} {{ review.client?.prenom || 'Inconnu' }}</strong>
+            </p>
+            <div class="rating">
+              <span *ngFor="let star of [].constructor(review.note); let i = index" class="selected">★</span>
+              <span *ngFor="let star of [].constructor(5 - review.note); let i = index" class="unselected">★</span>
+            </div>
+            <p>{{ review.review }}</p>
+            <p class="date">{{ review.date_ajout | date: 'short' }}</p>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </div>
+</section> -->
+
+
+<!-- <section class="subscribe_part section_padding">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="subscribe_part_content">
+                <h2>Get promotions & updates!</h2>
+                <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources credibly innovate granular internal .</p>
+                <div class="subscribe_form">
+                    <input type="email" placeholder="Enter your mail">
+                    <a href="#" class="btn_1">Subscribe</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section> -->
+
+<app-footer></app-footer>
+

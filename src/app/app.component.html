@@ -1,0 +1,7 @@
+<app-header  *ngIf="!showLoading"></app-header>
+<app-floating-chat></app-floating-chat>
+<!-- Loading screen, only visible when `showLoading` is true -->
+<app-loading-screen *ngIf="showLoading"></app-loading-screen>
+
+<!-- Main content, shown when the loading is done -->
+<router-outlet *ngIf="!showLoading"></router-outlet>

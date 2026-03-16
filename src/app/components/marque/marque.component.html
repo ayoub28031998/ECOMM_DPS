@@ -1,0 +1,337 @@
+<!--================Home Banner Area =================-->
+<div class="slider-area ">
+  <!-- Mobile Menu -->
+  <div class="single-slider slider-height2 d-flex align-items-center justify-content-center" style="background-image: url('../../../assets/img/hero/area.png'); ">
+    <div class="container">
+      <div class="row">
+          <div class="col-xl-12">
+              <div class="hero-cap text-center">
+                <h2>{{ selectedCategoryLabel }}</h2>
+                <p>Découvrez nos collections et produits tendance</p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+<!--================End Home Banner Area =================-->
+
+<!--================Category Product Area =================-->
+<section class="shop-area">
+  <div class="container">
+    <div class="row">
+      <!-- Sidebar: Filtres -->
+      <div class="col-lg-3">
+        <div class="filter-section">
+          <h3 class="filter-title">FILTRÉ PAR</h3>
+          <hr />
+
+
+          <!-- <div class="filter-widget">
+            <h4>Catégories</h4>
+            <ul class="filter-list">
+              <li
+              *ngFor="let sousSousCategorie of sousSousCategories" (click)="selectSousSousCategory(sousSousCategorie.id)"
+
+              [class.active]="selectedSousSousCategoryId ===  sousSousCategorie.id"
+
+                style="cursor: pointer"
+
+              >
+
+                <a >
+                  {{  sousSousCategorie.libelle }} ({{ sousSousCategorie.articles.length }})
+                </a>
+
+
+
+              </li>
+            </ul>
+          </div>
+          <hr /> -->
+
+
+          <div class="filter-widget">
+            <h4>Prix</h4>
+            <div class="range-slider">
+              <input
+                type="range"
+                [min]="minLimit"
+      [max]="maxPrice"
+                [(ngModel)]="minPrice"
+                id="minSlider"
+                (change)="onPriceChange()"
+              />
+              <input
+                type="range"
+                [min]="minPrice"
+                [max]="maxLimit"
+                [(ngModel)]="maxPrice"
+                id="maxSlider"
+                (change)="onPriceChange()"
+              />
+            </div>
+            <div class="price-display">
+              <label>
+                {{ minPrice }} DT - {{ maxPrice }} DT
+              </label>
+            </div>
+          </div>
+
+          <hr />
+
+          <!-- Filtres : Marques -->
+
+
+        </div>
+      </div>
+
+      <!-- Produits -->
+      <div class="col-lg-9">
+        <div class="products-header d-flex justify-content-between align-items-center">
+          <h2>Produits</h2>
+          <!-- <div class="sorting">
+            <label for="sort">Trier par :</label>
+            <select id="sort" (change)="sortProducts($event)">
+              <option value="name-asc">Nom, A à Z</option>
+              <option value="name-desc">Nom, Z à A</option>
+              <option value="price-asc">Prix croissant</option>
+              <option value="price-desc">Prix décroissant</option>
+            </select>
+          </div> -->
+        </div>
+
+        <div class="filters-active" *ngIf="activeFilters.length > 0 && showFilters">
+          <span class="filters-title">Filtres actifs :</span>
+          <div *ngFor="let filter of activeFilters" class="filter-tag">
+            {{ filter.label }}
+            <button class="remove-filter" (click)="removeFilter(filter)">×</button>
+          </div>
+          <!-- <button class="clear-filters" (click)="clearAllFilters()">Effacer Tout</button> -->
+        </div>
+
+
+        <!-- <div *ngIf="loader && firstLoad" class="loader-container">
+          <div class="spinner"></div>
+        </div> -->
+        <div *ngIf="loader">Chargement...</div>
+        <div *ngIf="!loader" class="row">
+          <div class="col-lg-4 col-md-6 col-6 mb-4" *ngFor="let article of ListArticlesFiltered">
+            <div class="product-card">
+              <div *ngIf="article.promo !== 0" class="badge-promo">
+                -{{ ((1 - article.prix_final / article.prix_ttc) * 100) | number:'1.0-0' }}%
+              </div>
+              <div class="product-image">
+                <img
+                  [src]="article.images[0]?.data || 'assets/img/no-image.png'" (click)="goToProduct(article.id, article.libelle)"
+                  alt="{{ article.libelle }}" style="cursor: pointer;"
+                />
+              </div>
+              <div class="product-details text-center">
+                <h4 (click)="goToProduct(article.id, article.libelle)" class="product-title">{{ article.libelle }}</h4>
+                <div class="product-price">
+                  <span *ngIf="article.promo !== 0" class="promo">{{ article.prix_final | number:'1.3-3' }} TND</span>
+                  <del *ngIf="article.promo !== 0">{{ article.prix_ttc | number:'1.3-3' }} TND</del>
+                  <span *ngIf="article.promo === 0">{{ article.prix_ttc | number:'1.3-3'}} TND</span>
+                </div>
+                <div class="product-buttons">
+                  <a (click)="showDetails(article)" class="btn-icon btn-eye"  style=" text-decoration: none;">
+                    <i class="ti-eye"></i>
+                  </a>
+                  <button (click)="addToCart(article)" class="btn-main">
+                    <i class="ti-shopping-cart"></i> Commander
+                  </button>
+                  <a (click)="addToWishlist(article)" class="btn-icon btn-heart">
+                    <i class="ti-heart"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div *ngIf=" !loader &&ListArticlesFiltered.length === 0" class="no-articles">
+          <h3>Pas d'article pour cette catégorie!</h3>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container">
+          <!-- Bouton pour aller à la page précédente -->
+          <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">
+            &lt;
+          </button>
+
+          <!-- Bouton pour la première page -->
+          <button (click)="onPageChange(1)" [class.active]="currentPage === 1">
+            1
+          </button>
+
+          <!-- Bouton pour afficher "..." si on est au-delà de la 3e page -->
+          <span *ngIf="currentPage > 3">...</span>
+
+          <!-- Boutons visibles dynamiquement -->
+          <button *ngFor="let page of getVisiblePages()" (click)="onPageChange(page)" [class.active]="page === currentPage">
+            {{ page }}
+          </button>
+
+          <!-- Bouton pour afficher "..." si on est avant les dernières pages -->
+          <span *ngIf="currentPage < totalPages - 2">...</span>
+
+          <!-- Bouton pour la dernière page, uniquement si ce n'est pas déjà visible -->
+          <button *ngIf="totalPages > 1 && !getVisiblePages().includes(totalPages) && totalPages !== 1"
+                  (click)="onPageChange(totalPages)"
+                  [class.active]="currentPage === totalPages">
+            {{ totalPages }}
+          </button>
+
+          <!-- Bouton pour aller à la page suivante -->
+          <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages">
+            &gt;
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!--================End Category Product Area =================-->
+
+<!-- Modal -->
+<p-dialog
+  header=""
+  [modal]="true"
+  [(visible)]="affichdetails"
+  [style]="{ width: '70rem' }"
+  [breakpoints]="{ '1199px': '80vw', '575px': '90vw' }"
+  [closable]="false"
+>
+  <!-- Bouton de fermeture -->
+  <button
+    type="button"
+    class="custom-close-btn"
+    (click)="affichdetails = false"
+  >
+    ×
+  </button>
+
+  <!-- Contenu de la fenêtre -->
+  <div class="row">
+    <div class="col-lg-6 text-center">
+      <!-- Badge de réduction -->
+      <div *ngIf="selectedArticle?.promo !== 0" class="discount-badge">
+        -{{ ((1 - selectedArticle?.prix_final / selectedArticle?.prix_ttc) * 100) | number:'1.0-0' }}%
+      </div>
+      <!-- Image du produit -->
+      <img
+        class="img-fluid w-100"
+        [src]="selectedArticle?.images[0].data"
+        alt="{{ selectedArticle?.title }}"
+      />
+    </div>
+
+    <div class="col-lg-6">
+      <!-- Détails du produit -->
+      <div class="s_product_text">
+        <h3 style="cursor: pointer;">{{ selectedArticle?.libelle }}</h3>
+        <div class="mt-3">
+          <!-- Prix avec ou sans promo -->
+          <span
+            *ngIf="selectedArticle?.promo !== 0"
+            style="color: #aa0058; font-weight: 500;"
+          >
+            {{ selectedArticle?.prix_final | number:'1.3-3' }} DT
+          </span>
+          <del *ngIf="selectedArticle?.promo !== 0">
+            {{ selectedArticle?.prix_ttc | number:'1.3-3' }} DT
+          </del>
+          <span
+            *ngIf="selectedArticle?.promo === 0"
+            style="color: #aa0058; font-weight: 500;"
+          >
+            {{ selectedArticle?.prix_ttc | number:'1.3-3'}} DT
+          </span>
+        </div>
+
+        <!-- Informations supplémentaires -->
+        <ul class="list">
+          <li>
+            <span class="label">Référence:</span>
+            {{ selectedArticle?.reference || 'Non spécifié' }}
+          </li>
+          <li>
+            <span class="label">Catégorie:</span>
+            {{ selectedArticle?.category?.libelle || 'Non spécifié' }}
+          </li>
+          <li>
+            <span class="label">Sous-catégorie:</span>
+            {{ selectedArticle?.sous_category?.libelle || 'Non spécifié' }}
+          </li>
+          <li>
+            <span class="label">Disponibilité:</span>
+            <span
+              [ngClass]="selectedArticle?.stock > 0 ? 'in-stock' : 'out-of-stock'"
+            >
+              {{ selectedArticle?.stock > 0 ? 'En stock' : 'Stock Épuisé' }}
+            </span>
+          </li>
+        </ul>
+
+        <p>{{ selectedArticle?.description || 'Aucune description disponible' }}</p>
+
+        <!-- Gestion de la quantité -->
+        <div class="product_count">
+          <span class="label" style="font-weight: bold;" for="qty">Quantité:</span>
+          <button
+            (click)="decreaseQuantity()"
+            class="reduced items-count"
+            type="button"
+            [disabled]="quantity <= 1"
+          >
+            <i class="la la-chevron-down"></i>
+          </button>
+          <input
+            type="text"
+            name="qty"
+            id="sst"
+            [(ngModel)]="quantity"
+            min="1"
+            maxlength="12"
+            title="Quantity:"
+            class="input-text qty"
+          />
+          <button
+            (click)="increaseQuantity()"
+            class="increase items-count"
+            type="button"
+          >
+            <i class="la la-chevron-up"></i>
+          </button>
+        </div>
+
+        <!-- Boutons d'action -->
+        <div class="product-buttons">
+          <button class="btn-main" (click)="addToCart(selectedArticle)">
+            <i class="ti-shopping-cart"></i> Ajouter au panier
+          </button>
+          <button
+            class="btn-main"
+            (click)="goToProduct(selectedArticle?.id, selectedArticle?.libelle)"
+
+          >
+            Voir plus de détails
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+
+<app-footer></app-footer>
