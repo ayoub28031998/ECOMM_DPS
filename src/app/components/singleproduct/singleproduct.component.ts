@@ -102,6 +102,20 @@ export class SingleproductComponent implements OnInit {
   console.log("➡ Image affichée au démarrage :", this.displayedImage);
 
       });
+      // Si variant
+if (this.article.variants && this.article.variants.length > 0) {
+  this.selectedVariant = this.article.variants[0];
+
+  if (this.selectedVariant.images?.length > 0) {
+    this.currentImages = this.selectedVariant.images;
+    this.displayedImage = this.currentImages[0].data;
+  }
+} 
+// Sinon article
+else if (this.article.images?.length > 0) {
+  this.currentImages = this.article.images;
+  this.displayedImage = this.currentImages[0].data;
+}
     }
     selectTeinte(variant: any) {
       this.selectedTeinte = variant.libelle;
@@ -271,7 +285,20 @@ isStockBlinking: boolean = false;
   }
 
   console.log("➡ Image affichée au démarrage :", this.displayedImage);
+// Si variant
+if (this.article.variants && this.article.variants.length > 0) {
+  this.selectedVariant = this.article.variants[0];
 
+  if (this.selectedVariant.images?.length > 0) {
+    this.currentImages = this.selectedVariant.images;
+    this.displayedImage = this.currentImages[0].data;
+  }
+} 
+// Sinon article
+else if (this.article.images?.length > 0) {
+  this.currentImages = this.article.images;
+  this.displayedImage = this.currentImages[0].data;
+}
 
 
     }, (error: any) => {
@@ -413,6 +440,20 @@ isStockBlinking: boolean = false;
     }, 0);
   }
 
+currentImages: any[] = [];
 
+changeImage(image: string) {
+  this.displayedImage = image;
+}
+
+isFullscreenOpen: boolean = false;
+
+openFullscreen() {
+  this.isFullscreenOpen = true;
+}
+
+closeFullscreen() {
+  this.isFullscreenOpen = false;
+}
 }
 

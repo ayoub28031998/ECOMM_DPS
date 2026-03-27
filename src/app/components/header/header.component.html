@@ -324,7 +324,7 @@
           <i class="fas fa-bars"></i>
         </button>
         <div class="logo-container">
-          <a href="/#/Home"><img src="assets/img/logo.png" alt="Logo"></a>
+          <a href="/#/Home"><img src="assets/img/logoo.jpeg" alt="Logo"></a>
         </div>
         <div class="shopping-card">
           <a (click)="toggleCart()" class="shopping"><i class="fas fa-shopping-cart"></i></a>
@@ -389,30 +389,13 @@
             style="cursor: pointer; width: 20px ; height: 20px; margin-right: 8px;" /> Accueil
         </a>
       </li>
-      <!-- Marques -->
-      <li class="nav-item">
-        <a class="nav-link" (click)="toggleDropdown('marques')"
-          style="color: black; cursor: pointer; font-weight: bold">
-          <img src="assets/img/xo/marque.png" alt="Marque 4"
-            style="cursor: pointer; width: 20px ; height: 20px; margin-right: 8px;" /> Marques
-          <i class="fleche" [class]="dropdowns['marques'] ? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
-        </a>
-
-      </li>
-      <ul *ngIf="dropdowns['marques']" class="list-unstyled sub-categories">
-        <li class="marque" *ngFor="let marque of Marques" (click)="navigateToBrand(marque); closeMenu()">
-          {{ marque.libelle }}
-        </li>
-      </ul>
-
       <!-- Catégories -->
       <li class="nav-item" *ngFor="let category of listCategory">
         <!-- Catégorie principale -->
         <a class="nav-link" [ngClass]="{ 'selected-category': selectedCategory === category }"
           (click)="goToShop(category.id); closeMenu()"
           style="color: black; cursor: pointer; font-weight: bold; display: flex;">
-          <img [src]="getIconForCategory(category.libelle)" (click)="goToShop(category.id); closeMenu()" alt="Icon for"
-            style="width: 20px ; height: 20px; margin-right: 8px;" />
+        
           {{ category.libelle }}
           <i class="fleche" (click)="selectCategory(category); $event.stopPropagation()"
             [class]="selectedCategory === category ? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>

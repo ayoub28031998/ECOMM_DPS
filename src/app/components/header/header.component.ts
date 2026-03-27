@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
   contactMessage: string = '';
   contactIcon: string = ''; // Variable pour stocker l'icône
   messages: { text: string, icon: string }[] = [
-    { text: '(+216) 53 122 400', icon: 'fas fa-phone' },
+    { text: '(+216) 44 756 660', icon: 'fas fa-phone' },
     { text: 'Livraison gratuite dès 99 DT', icon: 'fas fa-truck' } // Icône de livraison
   ];
   currentIndex: number = 0;
