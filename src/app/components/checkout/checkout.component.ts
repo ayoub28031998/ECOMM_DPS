@@ -172,7 +172,7 @@ loadGuestCartItems(): void {
   createCommandeObject(): any {
     console.log("🔹 createCommandeObject() appelée !");
     // Vérifier si les informations essentielles sont présentes (invité)
-    if (!this.user.nom || !this.user.prenom || !this.user.email || !this.user.telephone || !this.user.address) {
+    if (!this.user.nom || !this.user.prenom || !this.user.telephone || !this.user.address) {
         console.error('Erreur : Informations obligatoires manquantes');
         return null;
     }
@@ -430,15 +430,21 @@ saveUserData(): void {
       }
 
       // Adresse e-mail (validation format email)
-      if (!this.user.email || this.user.email.trim() === '') {
+/*       if (!this.user.email || this.user.email.trim() === '') {
           this.errors['email'] = 'Veuillez remplir ce champ.';
           console.warn("❌ Erreur : Email vide !");
           isValid = false;
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.user.email)) {
+
+      } else  */
+       if(this.user.email)
+       {
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.user.email)) {
           this.errors['email'] = 'Veuillez entrer une adresse e-mail valide.';
           console.warn("❌ Erreur : Email invalide !");
           isValid = false;
-      }
+        }
+       }
+     
 
     if (!this.user.address || this.user.address.trim() === '') {
         this.errors['address'] = 'Veuillez remplir ce champ.';

@@ -106,9 +106,7 @@
             <div class="col-md-6 form-group p_star">
               <input type="text" class="form-control" id="email" name="compemailany"
                 [(ngModel)]="user.email" placeholder="Adresse e-mail" (input)="updateError('email')"/>
-              <p *ngIf="errors['email']" class="error-message" style="color: red;">
-                {{ errors['email'] }}
-              </p>
+            
             </div>
 
             <div class="col-md-12 form-group p_star">

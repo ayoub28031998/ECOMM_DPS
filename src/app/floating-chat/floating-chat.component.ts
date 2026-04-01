@@ -35,10 +35,10 @@ export class FloatingChatComponent  implements OnInit {
         window.open('https://m.me/yourpage', '_blank');
         break;
       case 'whatsapp':
-        window.open('https://wa.me/1234567890', '_blank');
+        window.open('https://wa.me/+21644756660', '_blank');
         break;
       case 'call':
-        window.location.href = 'tel:+1234567890';
+        window.location.href = 'tel:+21644756660';
         break;
     }
     this.isChatMenuOpen = false;
